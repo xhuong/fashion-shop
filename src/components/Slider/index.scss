@@ -1,0 +1,107 @@
+@import "../../assests/styles/variables";
+
+.slider {
+  margin-top: $headerHeight;
+
+  &_item {
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    padding-top: 43%;
+    background-image: url("../../assests/images/banners/banner-01.png");
+  }
+
+  &_content {
+    position: absolute;
+    top: 50%;
+    left: 100px;
+    transform: translateY(-50%);
+  }
+
+  &_name_collection {
+    font-size: 1.4rem;
+    color: $redColor;
+  }
+
+  &_heading {
+    font-size: 6.5rem;
+    color: $blackColor;
+    margin: 0px 0px 4px;
+  }
+
+  &_subheading {
+    display: block;
+    font-style: italic;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 2rem;
+    color: #333c56;
+  }
+
+  // custom css react slick slider
+  .slick-prev,
+  .slick-next {
+    opacity: 0.3;
+    transition: opacity 0.6s;
+    background-color: transparent;
+    z-index: 1;
+    border-radius: 100%;
+    border: 1px solid $blackColor;
+  }
+
+  .slick-prev:hover,
+  .slick-next:hover {
+    opacity: 1;
+  }
+
+  .slick-prev {
+    left: unset;
+    right: 100px;
+    top: unset;
+    bottom: 40px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .slick-next {
+    top: unset;
+    bottom: 40px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .slick-prev::before,
+  .slick-next::before {
+    font-family: "Font Awesome 5 Brands";
+    color: black;
+    background-color: transparent;
+  }
+
+  .slick-dots {
+    li {
+      width: 36px;
+      height: 14px;
+      border-radius: 2px;
+      cursor: default;
+    }
+    bottom: 6px;
+    background-image: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.001),
+      rgba(255, 255, 255, 0.5)
+    );
+    button {
+      width: 36px;
+      height: 4px;
+      padding: unset;
+    }
+    button:before {
+      content: "";
+      background-color: $blackColor;
+      width: 36px;
+      height: 4px;
+      border-radius: 8px;
+    }
+  }
+}
