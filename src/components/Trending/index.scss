@@ -17,4 +17,39 @@
     font-size: 1.4rem;
     font-weight: 500;
   }
+  &_list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &_item {
+    position: relative;
+    margin: 0 5px;
+    a {
+      display: inline-block;
+      padding: 8px 14px;
+      color: $blackColor;
+      opacity: 0.6;
+    }
+    &--line-dashed {
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      svg {
+        display: none;
+        margin: 0 auto;
+      }
+    }
+  }
+  &_item.active {
+    a {
+      opacity: 1;
+    }
+    .trending_item--line-dashed {
+      svg {
+        display: block;
+      }
+    }
+  }
 }
