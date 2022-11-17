@@ -1,15 +1,34 @@
 import { TfiLineDashed } from "react-icons/tfi";
+
 import { Row, Col } from "antd";
 import { Link } from "react-router-dom";
 import "./index.scss";
+import { useState } from "react";
+import Product from "../Product";
 
 function Trending() {
-  const trendingTitles = [
-    { title: "All", status: "active", id: "0" },
-    { title: "Men", status: "unactive", id: "1" },
-    { title: "Women", status: "unactive", id: "2" },
-    { title: "Kid", status: "unactive", id: "3" },
+  const initTrends = [
+    { title: "All", status: "active", id: 0 },
+    { title: "Men", status: "unactive", id: 1 },
+    { title: "Women", status: "unactive", id: 2 },
+    { title: "Kid", status: "unactive", id: 3 },
   ];
+
+  const [trends, setTrends] = useState(initTrends);
+
+  const handleActive = (id) => {
+    initTrends.forEach((ele, index, arr) => {
+      if (id === ele.id && ele.status === "unactive") {
+        arr.forEach((ele) => {
+          if (ele.status === "active") {
+            ele.status = "unactive";
+          }
+        });
+        ele.status = "active";
+      }
+    });
+    setTrends([...initTrends]);
+  };
 
   return (
     <section className="section">
@@ -86,32 +105,49 @@ function Trending() {
 
         {/* Tabs Component  */}
         <ul className="trending_list">
-          <li className="trending_item active">
-            <Link to="">Men</Link>
-            <div className="trending_item--line-dashed">
-              <TfiLineDashed />
-            </div>
-          </li>
-          <li className="trending_item">
-            <Link to="">Men</Link>
-            <div className="trending_item--line-dashed">
-              <TfiLineDashed />
-            </div>
-          </li>
-          <li className="trending_item">
-            <Link to="">Men</Link>
-            <div className="trending_item--line-dashed">
-              <TfiLineDashed />
-            </div>
-          </li>
-          <li className="trending_item">
-            <Link to="">Men</Link>
-            <div className="trending_item--line-dashed">
-              <TfiLineDashed />
-            </div>
-          </li>
+          {trends?.map((trendingTitle) => (
+            <li
+              key={trendingTitle.id}
+              className={"trending_item " + trendingTitle.status}
+              onClick={() => handleActive(trendingTitle.id)}
+            >
+              <Link to="">{trendingTitle.title}</Link>
+              <div className="trending_item--line-dashed">
+                <TfiLineDashed />
+              </div>
+            </li>
+          ))}
         </ul>
         {/* End Tabs component  */}
+
+        {/* Product list component  */}
+        <Row gutter={[30, 30]}>
+          <Col xl={6} md={6} sm={12} xs={12}>
+            <Product hasQuickView />
+          </Col>
+          <Col xl={6} md={6} sm={12} xs={12}>
+            <Product />
+          </Col>
+          <Col xl={6} md={6} sm={12} xs={12}>
+            <Product />
+          </Col>
+          <Col xl={6} md={6} sm={12} xs={12}>
+            <Product />
+          </Col>
+          <Col xl={6} md={6} sm={12} xs={12}>
+            <Product />
+          </Col>
+          <Col xl={6} md={6} sm={12} xs={12}>
+            <Product />
+          </Col>
+          <Col xl={6} md={6} sm={12} xs={12}>
+            <Product />
+          </Col>
+          <Col xl={6} md={6} sm={12} xs={12}>
+            <Product />
+          </Col>
+        </Row>
+        {/* End Product list component  */}
       </div>
     </section>
   );

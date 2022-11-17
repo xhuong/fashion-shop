@@ -1,6 +1,7 @@
 import "./index.scss";
 import { Link } from "react-router-dom";
-import { CiSearch, CiHeart, CiUser, CiShoppingCart } from "react-icons/ci";
+import { CiSearch, CiHeart, CiUser } from "react-icons/ci";
+import { BsCart } from "react-icons/bs";
 
 function Header() {
   return (
@@ -55,7 +56,7 @@ function Header() {
               <span className="header_favorite-number">2</span>
             </div>
             <div className="header_icon">
-              <CiShoppingCart />
+              <BsCart />
               <span className="header_cart-number">3</span>
             </div>
           </div>

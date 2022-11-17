@@ -1,0 +1,140 @@
+@import "../../assests/styles/variables";
+
+.product {
+  position: relative;
+  overflow: hidden;
+  &_img_wrapper {
+  }
+  &_content {
+    padding-top: 8px;
+  }
+  &_reviews {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5px;
+  }
+  &_select_color {
+    display: flex;
+    justify-content: flex-start;
+    column-gap: 10px;
+    .product_option {
+      position: relative;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: rgb(240, 240, 240);
+
+      &.active {
+        border: 1px solid #000;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background-color: red;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+  &_favorite {
+    cursor: pointer;
+    svg {
+      font-size: 1.8rem;
+      color: #d6dde6;
+    }
+    &.active {
+      svg {
+        color: $blackColor;
+      }
+    }
+  }
+  &_star {
+    display: flex;
+    svg {
+      font-size: 1.2rem;
+      color: #d6dde6;
+    }
+  }
+  &_reviews_count {
+    font-size: 1.3rem;
+    letter-spacing: 0.2px;
+    font-weight: 400;
+    color: $grayDarkColor;
+  }
+  &_title {
+    display: block;
+    color: $primaryColor;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    word-break: break-all;
+    margin-bottom: 2.5px;
+    text-transform: capitalize;
+    line-height: 1;
+  }
+  &_price {
+    font-size: 1.4rem;
+    color: #151515;
+    font-weight: 600;
+  }
+  &_sale,
+  &_discount {
+    position: absolute;
+    top: 10px;
+    color: $whiteColor;
+    font-size: 1.3rem;
+    font-weight: 400;
+    padding: 2px 8px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  &_sale {
+    left: 10px;
+    background-color: $greencolor;
+  }
+
+  &_discount {
+    right: 10px;
+    background-color: $pinkColor;
+  }
+  &_action {
+    position: absolute;
+    top: 15%;
+    left: 100%;
+    transition: transform 0.4s, opacity 0.4s;
+    display: flex;
+    opacity: 0;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 10px 20px;
+
+    &_item {
+      cursor: pointer;
+      background-color: $whiteColor;
+      padding: 8px;
+      border-radius: 50%;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+      svg {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  &:hover {
+    .product_action {
+      opacity: 1;
+      transform: translateX(-70px);
+    }
+  }
+}
