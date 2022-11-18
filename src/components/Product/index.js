@@ -1,10 +1,12 @@
 import { AiFillStar } from "react-icons/ai";
 import { MdZoomOutMap } from "react-icons/md";
 import { IoMdHeartEmpty } from "react-icons/io";
+import { FaEye } from "react-icons/fa";
 import { BsCartPlus, BsHeartFill } from "react-icons/bs";
 
 import "./index.scss";
 import React from "react";
+import Button from "../../components/Button";
 
 function Product(props) {
   return (
@@ -14,7 +16,15 @@ function Product(props) {
           src={require("../../assests/images/products/women/2.png")}
           alt=""
         />
+        {props.hasQuickView && (
+          <div className="product_button_wrapper">
+            <Button secondary widthFull>
+              <FaEye /> QuickView
+            </Button>
+          </div>
+        )}
       </div>
+
       <div className="product_content">
         <div className="product_reviews">
           {props.hasQuickView ? (
@@ -46,7 +56,8 @@ function Product(props) {
         <span className="product_price">$99 - $129</span>
         <span className="product_sale">Sale</span>
         <span className="product_discount">- 40%</span>
-        {props.hasQuickView === false && (
+
+        {!props.hasQuickView && (
           <ul className="product_action">
             <li className="product_action_item">
               <MdZoomOutMap />

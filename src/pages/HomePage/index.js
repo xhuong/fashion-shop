@@ -1,7 +1,8 @@
 import React from "react";
 import SimpleSlider from "../../components/Slider";
-import Trending from "../../components/Trending";
+import Trending from "../../layouts/Trending";
 import Header from "../../layouts/Header";
+import OutTrendingProduct from "../../layouts/OutTrendingProduct";
 
 function HomePage() {
   return (
@@ -9,6 +10,7 @@ function HomePage() {
       <Header />
       <SimpleSlider />
       <Trending />
+      <OutTrendingProduct />
     </React.Fragment>
   );
 }

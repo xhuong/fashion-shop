@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import "./index.scss";
-import PrimaryButton from "../Button";
+import Button from "../../components/Button";
 
 const SimpleSlider = () => {
   const settings = {
@@ -32,9 +32,9 @@ const SimpleSlider = () => {
               New Winter <br /> Collections 2022
             </h2>
             <p className="slider_subheading">There's nothing like trend</p>
-            <PrimaryButton smallButton>
+            <Button primary smButton>
               Shop Now <BsArrowRight />
-            </PrimaryButton>
+            </Button>
           </div>
         </div>
         <div
@@ -49,9 +49,9 @@ const SimpleSlider = () => {
               New Winter <br /> Collections 2022
             </h2>
             <p className="slider_subheading">There's nothing like trend</p>
-            <PrimaryButton smallButton>
+            <Button primary smButton>
               Shop Now <BsArrowRight />
-            </PrimaryButton>
+            </Button>
           </div>
         </div>
         <div
@@ -66,9 +66,9 @@ const SimpleSlider = () => {
               New Winter <br /> Collections 2022
             </h2>
             <p className="slider_subheading">There's nothing like trend</p>
-            <PrimaryButton smallButton>
+            <Button primary smButton>
               Shop Now <BsArrowRight />
-            </PrimaryButton>
+            </Button>
           </div>
         </div>
       </Slider>
