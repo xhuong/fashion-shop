@@ -1,0 +1,29 @@
+.card {
+  &_img_wrapper {
+    margin-bottom: 5px;
+  }
+  &_time {
+    font-size: 1.4rem;
+    line-height: 1;
+  }
+  &_title {
+    line-height: 1;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 5px;
+  }
+  &_subtitle {
+    font-size: 1.4rem;
+    color: #707070;
+    font-weight: 400;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  &_continue_reading {
+    font-size: 1.4rem;
+    color: #151515;
+  }
+}

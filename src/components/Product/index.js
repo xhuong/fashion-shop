@@ -29,12 +29,20 @@ function Product(props) {
         <div className="product_reviews">
           {props.hasQuickView ? (
             <React.Fragment>
-              <div className="product_select_color">
-                <span className="product_option active"></span>
-                <span className="product_option"></span>
-                <span className="product_option"></span>
-                <span className="product_option"></span>
-              </div>
+              <ul className="product_select_color">
+                <li className="product_option active">
+                  <span></span>
+                </li>
+                <li className="product_option">
+                  <span></span>
+                </li>
+                <li className="product_option">
+                  <span></span>
+                </li>
+                <li className="product_option">
+                  <span></span>
+                </li>
+              </ul>
               <div className="product_favorite active">
                 <BsHeartFill />
               </div>

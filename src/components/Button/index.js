@@ -27,9 +27,8 @@ const Button = styled(PrimaryButton)`
 
   text-transfrom: capitalize;
   transition: all 0.4s;
-  height: ${(props) => (props.middleButton ? "46px" : "")};
-
   height: 46px;
+
   width: ${(props) =>
     props.smButton
       ? "146px"

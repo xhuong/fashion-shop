@@ -1,0 +1,86 @@
+@import "/src/assests/styles/variables";
+
+.footer {
+  padding: 60px 0 60px;
+  background-color: #252525;
+
+  &_logo_wrapper {
+    width: 150px;
+    margin-bottom: 20px;
+  }
+  & a,
+  & h4 {
+    color: $whiteColor;
+  }
+
+  &_title {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  &_item {
+    margin-top: 10px;
+  }
+  &_text,
+  a.footer_text {
+    transition: all 0.2s;
+    text-transform: capitalize;
+    font-size: 1.5rem;
+    color: $grayTextColor;
+    font-weight: 400;
+  }
+  &_text {
+    margin-top: 7.5px;
+  }
+  &_text.normal {
+    text-transform: none;
+  }
+
+  &_socials {
+    display: flex;
+    align-items: center;
+    .footer_social:not(:first-child) {
+      margin-left: 16px;
+    }
+    .footer_social a {
+      color: $grayTextColor;
+    }
+  }
+
+  & a:hover {
+    color: $whiteColor;
+  }
+
+  &_input_wrapper {
+    margin-top: 10px;
+    display: flex;
+    input {
+      background-color: #424141;
+      color: $grayTextColor;
+      flex: 1 1 auto;
+      padding: 10px 15px;
+      outline: none;
+    }
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      flex: 1;
+      background-color: #424141;
+    }
+    button:hover {
+      color: $grayTextColor;
+    }
+  }
+  &_payment {
+    margin-top: 10px;
+  }
+
+  &_payment_title {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+    color: $whiteColor;
+  }
+}

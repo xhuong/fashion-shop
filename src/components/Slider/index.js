@@ -32,7 +32,7 @@ const SimpleSlider = () => {
               New Winter <br /> Collections 2022
             </h2>
             <p className="slider_subheading">There's nothing like trend</p>
-            <Button primary smButton>
+            <Button primary mdButton>
               Shop Now <BsArrowRight />
             </Button>
           </div>
@@ -49,7 +49,7 @@ const SimpleSlider = () => {
               New Winter <br /> Collections 2022
             </h2>
             <p className="slider_subheading">There's nothing like trend</p>
-            <Button primary smButton>
+            <Button primary mdButton>
               Shop Now <BsArrowRight />
             </Button>
           </div>
@@ -66,7 +66,7 @@ const SimpleSlider = () => {
               New Winter <br /> Collections 2022
             </h2>
             <p className="slider_subheading">There's nothing like trend</p>
-            <Button primary smButton>
+            <Button primary mdButton>
               Shop Now <BsArrowRight />
             </Button>
           </div>
