@@ -32,7 +32,7 @@ function Trending() {
   };
 
   return (
-    <Section title="Trending Categories">
+    <Section title="Trending Categories" subTitle="Popular Categories">
       <Row justify={"center"} className="pb-20">
         <Col xl={4} lg={6} md={6} sm={12} xs={8} align={"center"}>
           <Link to="">

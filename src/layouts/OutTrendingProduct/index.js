@@ -6,7 +6,7 @@ import { BsArrowRight } from "react-icons/bs";
 
 function OutTrendingProduct() {
   return (
-    <Section title="Out Trending Product" gray>
+    <Section title="Out Trending Product" subTitle="Trendy Products" gray>
       <Row gutter={[30, 30]} className="pb-12">
         <Col xl={6} md={6} sm={12} xs={12}>
           <Product hasQuickView />

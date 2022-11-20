@@ -4,7 +4,7 @@ import Section from "../../components/Section";
 
 function NewUpdate() {
   return (
-    <Section title="New Updates">
+    <Section title="New Updates" subTitle="Latest News">
       <Row gutter={[30, 30]}>
         <Col xl={8} md={8} sm={24} xs={24}>
           <BlogCard />
