@@ -25,7 +25,7 @@ const Button = styled(PrimaryButton)`
     border-color: ${(props) => (props.primary ? "#000000" : "")};
   }
 
-  text-transfrom: capitalize;
+  text-transform: capitalize;
   transition: all 0.4s;
   height: 46px;
 
@@ -34,7 +34,7 @@ const Button = styled(PrimaryButton)`
       ? "146px"
       : props.mdButton
       ? "166px"
-      : props.widthFull
+      : props.widthfull
       ? "100%"
       : ""};
 

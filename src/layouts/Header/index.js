@@ -2,8 +2,16 @@ import "./index.scss";
 import { Link } from "react-router-dom";
 import { CiSearch, CiHeart, CiUser } from "react-icons/ci";
 import { BsCart } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
+import { openSidebar } from "../../redux/slices/sidebarSlice";
+import SideBar from "../../components/SideBar";
+import { openModal } from "../../redux/slices/modalSlice";
+import Modal from "../../components/Modal";
 
 function Header() {
+  const isActiveModal = useSelector((state) => state.modal.isActive);
+  const dispatch = useDispatch();
+
   return (
     <div className="header">
       <div className="container">
@@ -45,21 +53,32 @@ function Header() {
             </ul>
           </div>
           <div className="navbar_right">
-            <div className="header_icon">
+            <div
+              className="header_icon"
+              onClick={() => dispatch(openSidebar("Search Products"))}
+            >
               <CiSearch />
             </div>
-            <div className="header_icon">
+            <div className="header_icon" onClick={() => dispatch(openModal())}>
               <CiUser />
             </div>
-            <div className="header_icon">
+            <div
+              className="header_icon"
+              onClick={() => dispatch(openSidebar("Saved Products"))}
+            >
               <CiHeart />
               <span className="header_favorite-number">2</span>
             </div>
-            <div className="header_icon">
+            <div
+              className="header_icon"
+              onClick={() => dispatch(openSidebar("Products Lists"))}
+            >
               <BsCart />
               <span className="header_cart-number">3</span>
             </div>
           </div>
+          <SideBar />
+          {isActiveModal && <Modal />}
         </div>
       </div>
     </div>

@@ -26,7 +26,7 @@ const SimpleSlider = () => {
             backgroundImage: `url(${require("../../assests/images/banners/banner-01.png")}),`,
           }}
         >
-          <div className="slider_content">
+          <div className="slider_content container">
             <p className="slider_name_collection">Winter Collection</p>
             <h2 className="slider_heading">
               New Winter <br /> Collections 2022
@@ -37,13 +37,14 @@ const SimpleSlider = () => {
             </Button>
           </div>
         </div>
+
         <div
           className="slider_item"
           style={{
-            backgroundImage: `url(${require("../../assests/images/banners/banner-01.png")})`,
+            backgroundImage: `url(${require("../../assests/images/banners/banner-01.png")}),`,
           }}
         >
-          <div className="slider_content">
+          <div className="slider_content container">
             <p className="slider_name_collection">Winter Collection</p>
             <h2 className="slider_heading">
               New Winter <br /> Collections 2022
@@ -54,13 +55,14 @@ const SimpleSlider = () => {
             </Button>
           </div>
         </div>
+
         <div
           className="slider_item"
           style={{
-            backgroundImage: `url(${require("../../assests/images/banners/banner-01.png")})`,
+            backgroundImage: `url(${require("../../assests/images/banners/banner-01.png")}),`,
           }}
         >
-          <div className="slider_content">
+          <div className="slider_content container">
             <p className="slider_name_collection">Winter Collection</p>
             <h2 className="slider_heading">
               New Winter <br /> Collections 2022

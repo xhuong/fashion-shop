@@ -1,0 +1,68 @@
+@import "../../assests/styles/variables";
+
+@keyframes moveFromTop {
+  0% {
+    transform: translateY(-100vh);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.7);
+
+  &_content {
+    animation: moveFromTop 0.3s forwards;
+    transition: transform 0.3s;
+    background-color: $whiteColor;
+    padding: 48px;
+    width: 500px;
+    max-width: 500px;
+    border-radius: 6px;
+    z-index: 3;
+  }
+
+  &_heading {
+    font-size: 3rem;
+    color: $blackColor;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  .form_group {
+    margin-bottom: 15px;
+  }
+
+  &_label {
+    display: inline-block;
+    font-size: 1.6rem;
+    color: $grayDarkColor;
+    margin-bottom: 6px;
+  }
+  &_forgot_password {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+    font-size: 1.4rem;
+    color: $primaryColor;
+  }
+  &_register {
+    display: flex;
+    justify-content: center;
+    column-gap: 5px;
+  }
+  &_text {
+    color: $grayDarkColor;
+    font-size: 1.6rem;
+  }
+}

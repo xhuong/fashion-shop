@@ -18,7 +18,7 @@ function Product(props) {
         />
         {props.hasQuickView && (
           <div className="product_button_wrapper">
-            <Button secondary widthFull>
+            <Button secondary widthfull>
               <FaEye /> QuickView
             </Button>
           </div>
