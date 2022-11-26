@@ -9,6 +9,15 @@
   }
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .modal {
   display: flex;
   justify-content: center;
@@ -20,9 +29,11 @@
   right: 0;
   z-index: 100;
   background-color: rgba(0, 0, 0, 0.7);
+  transition: opacity 0.3s;
+  animation: fadeIn 0.4s forwards;
 
   &_content {
-    animation: moveFromTop 0.3s forwards;
+    animation: moveFromTop 0.4s forwards;
     transition: transform 0.3s;
     background-color: $whiteColor;
     padding: 48px;
@@ -50,6 +61,7 @@
     margin-bottom: 6px;
   }
   &_forgot_password {
+    text-transform: capitalize;
     display: inline-block;
     width: 100%;
     text-align: right;
