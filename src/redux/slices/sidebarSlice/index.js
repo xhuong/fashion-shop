@@ -5,19 +5,43 @@ const sidebarSlice = createSlice({
   initialState: {
     isActive: false,
     heading: "",
+    listSideBars: [
+      { name: "search product", status: "unactive" },
+      { name: "saved products", status: "unactive" },
+      { name: "list products", status: "unactive" },
+    ],
   },
   reducers: {
     openSidebar: (state, action) => {
-      state.isActive = true;
-      state.heading = action.payload;
+      const newListSideBars = [...state.listSideBars];
+      newListSideBars.splice(action.payload.sideBarItemActive.index, 1);
+      return {
+        ...state,
+        isActive: true,
+        heading: action.payload.sideBarItemActive.name,
+        listSideBars: [
+          ...newListSideBars,
+          { ...action.payload.sideBarItemActive },
+        ],
+      };
     },
     closeSidebar: (state) => {
-      state.isActive = false;
+      // remove all status active
+      const newListSideBars2 = [...state.listSideBars];
 
-      // delay remove heading sidebar
-      setTimeout(() => {
-        state.heading = "";
-      }, 700);
+      const result = newListSideBars2.map((element) => {
+        return {
+          name: element.name,
+          status: "unactive",
+        };
+      });
+
+      return {
+        ...state,
+        isActive: false,
+        heading: "",
+        listSideBars: [...result],
+      };
     },
   },
 });

@@ -11,7 +11,7 @@ import Modal from "../../components/Modal";
 function Header() {
   const isActiveModal = useSelector((state) => state.modal.isActive);
   const dispatch = useDispatch();
-
+  console.log("re-render header");
   return (
     <div className="header">
       <div className="container">
@@ -55,7 +55,16 @@ function Header() {
           <div className="navbar_right">
             <div
               className="header_icon"
-              onClick={() => dispatch(openSidebar("Search Products"))}
+              onClick={() =>
+                dispatch(
+                  openSidebar({
+                    sideBarItemActive: {
+                      name: "search product",
+                      status: "active",
+                    },
+                  })
+                )
+              }
             >
               <CiSearch />
             </div>
@@ -64,14 +73,32 @@ function Header() {
             </div>
             <div
               className="header_icon"
-              onClick={() => dispatch(openSidebar("Saved Products"))}
+              onClick={() =>
+                dispatch(
+                  openSidebar({
+                    sideBarItemActive: {
+                      name: "saved products",
+                      status: "active",
+                    },
+                  })
+                )
+              }
             >
               <CiHeart />
               <span className="header_favorite-number">2</span>
             </div>
             <div
               className="header_icon"
-              onClick={() => dispatch(openSidebar("Products Lists"))}
+              onClick={() =>
+                dispatch(
+                  openSidebar({
+                    sideBarItemActive: {
+                      name: "list products",
+                      status: "active",
+                    },
+                  })
+                )
+              }
             >
               <BsCart />
               <span className="header_cart-number">3</span>

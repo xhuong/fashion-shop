@@ -90,4 +90,8 @@
   &.active {
     transform: translateX(0);
   }
+
+  &_search_form_wrapper {
+    padding: 16px;
+  }
 }

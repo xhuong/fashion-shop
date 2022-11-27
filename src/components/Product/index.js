@@ -13,7 +13,7 @@ function Product(props) {
     <div className="product">
       <div className="product_img_wrapper">
         <img
-          src={require("../../assests/images/products/women/2.png")}
+          src={require("../../assests/images/products/women/3.jpg")}
           alt=""
         />
         {props.hasQuickView && (

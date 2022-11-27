@@ -22,10 +22,8 @@ const ScrollButton = () => {
   };
 
   useEffect(() => {
-    console.log("Component mounted");
     window.addEventListener("scroll", toggleVisible);
     return () => {
-      console.log("Component unmounted");
       return window.removeEventListener("scroll", toggleVisible);
     };
   });
