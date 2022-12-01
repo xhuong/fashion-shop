@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 export const StyledModal = styled.div`
   @keyframes moveFromTop {
     0% {
@@ -30,10 +32,10 @@ export const StyledModal = styled.div`
   transition: opacity 0.3s;
   animation: fadeIn 0.4s forwards;
 
-  .content {
+  & .modal_content {
     animation: moveFromTop 0.4s forwards;
     transition: transform 0.3s;
-    background-color: $whiteColor;
+    background-color: #ffffff;
     padding: 48px;
     width: 500px;
     max-width: 500px;
@@ -41,17 +43,10 @@ export const StyledModal = styled.div`
     z-index: 3;
   }
 
-  .heading {
+  & .modal_heading {
     font-size: 3rem;
     color: $blackColor;
     font-weight: 400;
     text-align: center;
-  }
-
-  .label {
-    display: inline-block;
-    font-size: 1.6rem;
-    color: $grayDarkColor;
-    margin-bottom: 6px;
   }
 `;
