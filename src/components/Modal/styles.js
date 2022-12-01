@@ -1,24 +1,22 @@
-@import "../../assests/styles/variables";
+export const StyledModal = styled.div`
+  @keyframes moveFromTop {
+    0% {
+      transform: translateY(-100vh);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
 
-@keyframes moveFromTop {
-  0% {
-    transform: translateY(-100vh);
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
-  100% {
-    transform: translateY(0);
-  }
-}
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.modal {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +30,7 @@
   transition: opacity 0.3s;
   animation: fadeIn 0.4s forwards;
 
-  &_content {
+  .content {
     animation: moveFromTop 0.4s forwards;
     transition: transform 0.3s;
     background-color: $whiteColor;
@@ -43,38 +41,17 @@
     z-index: 3;
   }
 
-  &_heading {
+  .heading {
     font-size: 3rem;
     color: $blackColor;
     font-weight: 400;
     text-align: center;
   }
 
-  .form_group {
-    margin-bottom: 15px;
-  }
-
-  &_label {
+  .label {
     display: inline-block;
     font-size: 1.6rem;
     color: $grayDarkColor;
     margin-bottom: 6px;
   }
-  &_forgot_password {
-    text-transform: capitalize;
-    display: inline-block;
-    width: 100%;
-    text-align: right;
-    font-size: 1.4rem;
-    color: $primaryColor;
-  }
-  &_register {
-    display: flex;
-    justify-content: center;
-    column-gap: 5px;
-  }
-  &_text {
-    color: $grayDarkColor;
-    font-size: 1.6rem;
-  }
-}
+`;

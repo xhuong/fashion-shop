@@ -11,7 +11,6 @@ import Modal from "../../components/Modal";
 function Header() {
   const isActiveModal = useSelector((state) => state.modal.isActive);
   const dispatch = useDispatch();
-  console.log("re-render header");
   return (
     <div className="header">
       <div className="container">

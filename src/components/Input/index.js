@@ -1,18 +1,19 @@
-import { Input as InputAntd } from "antd";
-import styled from "styled-components";
+import { Input as AntInput } from "antd";
+import { connect, useField } from "formik";
+import Message from "../Message";
+import { StyledInput } from "./styles";
 
-const Input = styled(InputAntd)`
-  outline: none;
-  padding: 11px 20px;
+const Input = (props) => {
+  const [field, meta] = useField(props);
+  console.log("..asdasd", field);
+  return (
+    <StyledInput>
+      <AntInput {...field} placeholder={props.placeholder} />
+      {meta.touched && meta.error ? (
+        <Message className={`message ${meta.error && "danger"}`}>{meta.error}</Message>
+      ) : null}
+    </StyledInput>
+  );
+};
 
-  font-size: 1.6rem;
-  :focus {
-    border-color: #000000;
-    box-shadow: unset;
-  }
-  :hover {
-    border-color: #000000;
-  }
-`;
-
-export default Input;
+export default connect(Input);

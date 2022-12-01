@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../Button";
 import { closeSidebar } from "../../redux/slices/sidebarSlice";
-
 import SearchForm from "../SearchForm";
 import "./index.scss";
 
@@ -13,13 +12,9 @@ function SideBar() {
   const sidebarHeading = useSelector((state) => state.sidebar.heading);
   const listSideBars = useSelector((state) => state.sidebar.listSideBars);
 
-  console.log("listSideBars status......", listSideBars);
-
   const findActiveSideBarItem = (array) => {
     const sideBarItemActive = array.filter((element) => {
-      if (element.status === "active") {
-        return element;
-      }
+      return element.status === "active" ? element : undefined;
     });
     return sideBarItemActive;
   };
@@ -55,7 +50,7 @@ function SideBar() {
                   <h4 className="sidebar_item_title fs-sm ft-medium">
                     Women Striped Shirt Dress
                   </h4>
-                  <p className="sidebar_item_size">36, Red</p>
+                  <p className="font-bold sidebar_item_size">36, Red</p>
                   <p className="sidebar_item_price">$129</p>
                 </div>
               </div>

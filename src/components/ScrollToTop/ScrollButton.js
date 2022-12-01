@@ -29,8 +29,11 @@ const ScrollButton = () => {
   });
 
   return (
-    <Button style={{ display: visible ? "block" : "none" }}>
-      <FaArrowCircleUp onClick={scrollToTop} />
+    <Button
+      style={{ display: visible ? "block" : "none" }}
+      onClick={scrollToTop}
+    >
+      <FaArrowCircleUp />
     </Button>
   );
 };

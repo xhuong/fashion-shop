@@ -35,7 +35,11 @@ function OutTrendingProduct() {
       </Row>
       <Row>
         <Col xl={24} md={24} sm={24} xs={24}>
-          <Button primary mdButton className="ml-auto mr-auto my-0">
+          <Button
+            type="primary"
+            size="md-btn"
+            className="ml-auto mr-auto my-0 "
+          >
             Explore More <BsArrowRight />
           </Button>
         </Col>
