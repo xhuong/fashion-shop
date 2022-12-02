@@ -21,10 +21,10 @@ function Header() {
             </Link>
             <ul className="navbar_list">
               <li className="navbar_item">
-                <Link to={"/"}>Home</Link>
+                <Link to="/">Home</Link>
               </li>
               <li className="navbar_item">
-                <Link to={"/shop"}>Shop</Link>
+                <Link to="/shop">Shop</Link>
                 <ul className="navbar_subnav">
                   <li className="navbar_subnav-item">
                     <Link to={"/"}>Shop</Link>

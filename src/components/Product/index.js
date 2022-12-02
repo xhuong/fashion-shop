@@ -12,13 +12,10 @@ function Product(props) {
   return (
     <div className="product">
       <div className="product_img_wrapper">
-        <img
-          src={require("../../assests/images/products/women/3.jpg")}
-          alt=""
-        />
+        <img src={require("../../assests/images/products/women/3.jpg")} alt="" />
         {props.hasQuickView && (
           <div className="product_button_wrapper">
-            <Button secondary widthfull>
+            <Button type="secondary" size="full-btn">
               <FaEye /> QuickView
             </Button>
           </div>

@@ -34,8 +34,7 @@ function SideBar() {
         </div>
       </div>
 
-      {result[0]?.name === "saved products" &&
-      result[0]?.status === "active" ? (
+      {result[0]?.name === "saved products" && result[0]?.status === "active" ? (
         <>
           <ul className="sidebar_list">
             <li className="sidebar_item">
@@ -64,10 +63,10 @@ function SideBar() {
             <h4 className="sidebar_total_price">$417</h4>
           </div>
           <div className="sidebar_action">
-            <Button secondary widthfull className="mb-5">
+            <Button type="secondary" size="full-btn" className="mb-5">
               Move to cart
             </Button>
-            <Button primary widthfull>
+            <Button type="primary" size="full-btn">
               Edit or view
             </Button>
           </div>
@@ -103,18 +102,17 @@ function SideBar() {
             <h4 className="sidebar_total_price">$417</h4>
           </div>
           <div className="sidebar_action">
-            <Button secondary widthfull className="mb-5">
+            <Button type="secondary" size="full-btn" className="mb-5">
               Check out now
             </Button>
-            <Button primary widthfull>
+            <Button type="primary" size="full-btn">
               Edit or view
             </Button>
           </div>
         </>
       ) : null}
 
-      {result[0]?.name === "search product" &&
-      result[0]?.status === "active" ? (
+      {result[0]?.name === "search product" && result[0]?.status === "active" ? (
         <div className="p-6">
           <SearchForm />
         </div>

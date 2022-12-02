@@ -1,0 +1,30 @@
+@import "../../../assests/styles/variables";
+
+.product_detail_information {
+  &_star {
+    display: inline-flex;
+    svg {
+      font-size: 1.2rem;
+      color: #d6dde6;
+    }
+  }
+  &_reviews_count {
+    font-size: 1.3rem;
+    letter-spacing: 0.2px;
+    font-weight: 400;
+    color: $grayDarkColor;
+  }
+  &_detail {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    text-overflow: ellipsis;
+    overflow-y: hidden;
+    line-height: 1.4;
+  }
+  &_select {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #d9d9d9;
+  }
+}

@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ScrollButton from "./components/ScrollToTop/ScrollButton";
+import ShopPage from "./pages/ShopPage";
+import ProductDetailPage from "./pages/ProductDetailPage";
 
 function App() {
   return (
@@ -9,9 +11,9 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/shop" element={<p>shop</p>} />
+            <Route path="/shop" element={<ShopPage />} />
             <Route path="/order-page" element={<p>order</p>} />
-            <Route path="/product-detail" element={<p>product-detail</p>} />
+            <Route path="/product-detail" element={<ProductDetailPage />} />
             <Route path="/sign in" element={<p>sign in</p>} />
             <Route path="/account" element={<p>account</p>} />
           </Routes>

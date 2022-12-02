@@ -7,6 +7,10 @@ import Select from "../Select";
 const SearchForm = () => {
   const options = [
     {
+      name: "Select category",
+      value: "select category",
+    },
+    {
       name: "women",
       value: "women",
     },
@@ -34,10 +38,9 @@ const SearchForm = () => {
         searchKeyWord: Yup.string()
           .min(3, "Must be 3 characters or more")
           .required("Required"),
-        jobType: Yup.string().oneOf(
-          ["men", "women", "kids"],
-          "Invalid category name, choose again sir!"
-        ),
+        jobType: Yup.string()
+          .oneOf(["men", "women", "kids"], "Invalid category name, choose again sir!")
+          .required("Required"),
       })}
     >
       <Form>

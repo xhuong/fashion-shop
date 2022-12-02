@@ -1,0 +1,76 @@
+@import "../../assests/styles/variables";
+
+.choose_color {
+  width: 100%;
+  max-width: 100%;
+  &_list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 10px;
+  }
+  &_item {
+    cursor: pointer;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: transparent;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $grayColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.active {
+      border-color: $blackColor;
+    }
+
+    span {
+      display: inline-block;
+      height: 22px;
+      width: 22px;
+      border-radius: inherit;
+    }
+    &.light_green span {
+      background-color: #becc36;
+    }
+    &.light_gray span {
+      background-color: #d1dceb;
+    }
+    &.orange span {
+      background-color: orange;
+    }
+    &.yellow span {
+      background-color: yellow;
+    }
+    &.white span {
+      border: 1px solid #000;
+      background-color: $whiteColor;
+    }
+    &.violet span {
+      background-color: violet;
+    }
+    &.pink span {
+      background-color: pink;
+    }
+    &.black span {
+      background-color: $blackColor;
+    }
+    &.brown span {
+      background-color: #e36947;
+    }
+    &.light_pink span {
+      background-color: #f3dcff;
+    }
+    &.light_yellow span {
+      background-color: #f4e6a2;
+    }
+    &.dark_blue span {
+      background-color: #6185c4;
+    }
+  }
+}
