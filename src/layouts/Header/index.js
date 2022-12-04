@@ -45,6 +45,14 @@ function Header() {
               </li>
               <li className="navbar_item">
                 <Link to={"/"}>Pages</Link>
+                <ul className="navbar_subnav">
+                  <li className="navbar_subnav-item">
+                    <Link to={"/404"}>404 Page</Link>
+                  </li>
+                  <li className="navbar_subnav-item">
+                    <Link to={"/my-order"}>My order</Link>
+                  </li>
+                </ul>
               </li>
               <li className="navbar_item">
                 <Link to={"/"}>Docs</Link>

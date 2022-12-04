@@ -5,10 +5,9 @@ import { StyledInput } from "./styles";
 
 const Input = (props) => {
   const [field, meta] = useField(props);
-  console.log("..asdasd", field);
   return (
     <StyledInput>
-      <AntInput {...field} placeholder={props.placeholder} />
+      <AntInput {...field} placeholder={props.placeholder} type={props.type} />
       {meta.touched && meta.error ? (
         <Message className={`message ${meta.error && "danger"}`}>{meta.error}</Message>
       ) : null}

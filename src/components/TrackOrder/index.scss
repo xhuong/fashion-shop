@@ -1,0 +1,89 @@
+@import "../../assests/styles/variables";
+
+.track_order {
+  border: 1px solid #d9d9d9;
+
+  &_header {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $grayLightColor;
+  }
+
+  &_title {
+    display: block;
+    font-size: 1.4rem;
+  }
+
+  &_number {
+    font-weight: 500;
+  }
+
+  &_list {
+    padding: 12px;
+  }
+
+  &_item:not(:last-child) {
+    margin-bottom: 12px;
+  }
+
+  &_item_infor {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &_item_left {
+    display: flex;
+    align-items: center;
+    width: 280px;
+  }
+
+  &_item--img-wrapper {
+    width: 75px;
+    min-width: 75px;
+    overflow: hidden;
+    border-radius: 4px;
+    margin-right: 8px;
+  }
+
+  &_item_title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &_item_size {
+    font-size: 1.2rem;
+  }
+
+  &_item_price {
+    font-weight: 600;
+  }
+
+  &_item_status p:first-child,
+  &_item_expected_date p:first-child {
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: $grayDarkColor;
+  }
+
+  &_item_status p:last-child {
+    font-size: 1.4rem;
+  }
+
+  &_item_expected_date span {
+    font-weight: 600;
+    font-size: 1.4rem;
+  }
+
+  &_total {
+    padding: 12px;
+    border-top: 1px solid #d9d9d9;
+  }
+}

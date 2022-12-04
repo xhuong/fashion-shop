@@ -1,0 +1,12 @@
+.register {
+  padding: 30px 0 50px;
+
+  &_container {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

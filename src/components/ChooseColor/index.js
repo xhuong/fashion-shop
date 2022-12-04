@@ -75,13 +75,8 @@ const ChooseColor = () => {
         });
       }
     });
-    console.log("new array", newArray);
     setColors(newArray);
   };
-
-  useEffect(() => {
-    console.log("initcolors...", colors);
-  }, [colors]);
 
   return (
     <div className="choose_color">

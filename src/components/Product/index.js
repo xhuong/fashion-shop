@@ -3,14 +3,15 @@ import { MdZoomOutMap } from "react-icons/md";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { FaEye } from "react-icons/fa";
 import { BsCartPlus, BsHeartFill } from "react-icons/bs";
-
 import "./index.scss";
 import React from "react";
 import Button from "../../components/Button";
+import { useNavigate } from "react-router-dom";
 
 function Product(props) {
+  const navigate = useNavigate();
   return (
-    <div className="product">
+    <div className="product" onClick={() => navigate("/product-detail")}>
       <div className="product_img_wrapper">
         <img src={require("../../assests/images/products/women/3.jpg")} alt="" />
         {props.hasQuickView && (

@@ -12,7 +12,6 @@ export const StyledInput = styled.div`
   }
 
   & .ant-input {
-    text-transform: capitalize;
     padding: 11px 16px !important;
     font-size: 1.6rem;
     margin-bottom: 12.5px;

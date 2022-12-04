@@ -3,6 +3,10 @@ import HomePage from "./pages/HomePage";
 import ScrollButton from "./components/ScrollToTop/ScrollButton";
 import ShopPage from "./pages/ShopPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
+import ScrollToTop from "./Helpers/ScrollToTop";
+import PageNotFoundPage from "./pages/PageNotFoundPage";
+import MyOrderPage from "./pages/MyOrderPage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   return (
@@ -11,12 +15,13 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/shop" element={<ShopPage />} />
-            <Route path="/order-page" element={<p>order</p>} />
-            <Route path="/product-detail" element={<ProductDetailPage />} />
-            <Route path="/sign in" element={<p>sign in</p>} />
-            <Route path="/account" element={<p>account</p>} />
+            <Route path="shop" element={<ShopPage />} />
+            <Route path="/my-order" element={<MyOrderPage />} />
+            <Route path="/products/:id" element={<ProductDetailPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="*" element={<PageNotFoundPage />} />
           </Routes>
+          <ScrollToTop />
         </Router>
       </div>
       <ScrollButton />
