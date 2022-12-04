@@ -2,12 +2,12 @@ import { useEffect } from "react";
 import { useState } from "react";
 import "./index.scss";
 
-const ChooseColor = () => {
+const ChooseColor = ({ onChange, ...props }) => {
   const initColors = [
     {
       name: "orange",
       value: "orange",
-      active: true,
+      active: false,
     },
     {
       name: "yellow",
@@ -77,6 +77,17 @@ const ChooseColor = () => {
     });
     setColors(newArray);
   };
+
+  const findChoosedColor = (array) => {
+    return array.filter((arrayItem) => {
+      return arrayItem.active === true;
+    });
+  };
+
+  useEffect(() => {
+    const choosedColor = findChoosedColor(colors);
+    onChange(choosedColor[0]?.value);
+  }, [colors]);
 
   return (
     <div className="choose_color">

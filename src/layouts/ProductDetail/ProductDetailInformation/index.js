@@ -6,30 +6,15 @@ import "./index.scss";
 import { Col, Row } from "antd";
 import { IoCart } from "react-icons/io5";
 
-const countOptions = [
-  {
-    name: "1",
-    value: 1,
-  },
-  {
-    name: "2",
-    value: 2,
-  },
-  {
-    name: "3",
-    value: 3,
-  },
-  {
-    name: "4",
-    value: 4,
-  },
-  {
-    name: "5",
-    value: 5,
-  },
-];
-
 const ProductDetailInformation = () => {
+  const onChangeColor = (value) => {
+    console.log(value);
+    // if user dont choose color => set color = ""
+    if (value === undefined) {
+      value = "";
+    }
+  };
+
   return (
     <div className="product_detail_information">
       <p className="text-success d-inline-block pt-1 pb-1 px-4 rounded-sm">
@@ -59,7 +44,7 @@ const ProductDetailInformation = () => {
           Tempore saepe explicabo molestiae?
         </p>
         <p className="font-semibold my-6">Color:</p>
-        <ChooseColor />
+        <ChooseColor name="color" onChange={onChangeColor} />
         <p className="font-semibold my-6">Size:</p>
         {/* <ChooseSize /> */}
 

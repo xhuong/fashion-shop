@@ -1,17 +1,16 @@
 import { Col, Row } from "antd";
-import { Formik, Form } from "formik";
 import RangeSlider from "../RangeSlider";
-import * as Yup from "yup";
 import "./index.scss";
 import Button from "../Button";
-import Select from "../Select";
 import ChooseColor from "../ChooseColor";
+import SelectNonFormik from "../SelectNonFormik";
+import { useState } from "react";
 
 const FilterShop = () => {
   const options = [
     {
       name: "Select category",
-      value: "select category",
+      value: "",
     },
     {
       name: "women",
@@ -30,7 +29,7 @@ const FilterShop = () => {
   const sizeOptions = [
     {
       name: "Choose size",
-      value: "choose size",
+      value: "",
     },
     {
       name: "S",
@@ -46,71 +45,109 @@ const FilterShop = () => {
     },
   ];
 
-  const initialValues = {
+  const initialFilter = {
     category: "",
     size: "",
-    // color: "",
-    // minPrice: 0,
-    // maxPrice: 0,
+    color: "",
+    price: 0,
   };
+
+  const [filter, setFilter] = useState(initialFilter);
+
+  const [isEmptyCategory, setIsEmptyCategory] = useState(false);
+
+  const onChangeSizeSelect = (value) => {
+    console.log("size: ", value);
+    setFilter((prevState) => ({
+      ...prevState,
+      size: value,
+    }));
+  };
+
+  const onChangeCategorySelect = (value) => {
+    setIsEmptyCategory(false);
+    setFilter((prevState) => ({
+      ...prevState,
+      category: value,
+    }));
+  };
+
+  const onChangeRangePrice = (value) => {
+    console.log("price: ", value);
+    setFilter((prevState) => ({
+      ...prevState,
+      price: value,
+    }));
+  };
+
+  const onChangeColor = (value) => {
+    // if user dont choose color => set color = ""
+    if (value === undefined) {
+      setFilter((prevState) => ({
+        ...prevState,
+        color: "",
+      }));
+    } else {
+      setFilter((prevState) => ({
+        ...prevState,
+        color: value,
+      }));
+    }
+  };
+
+  const handleSubmitFilter = () => {
+    if (filter.category === "") {
+      setIsEmptyCategory(true);
+    } else {
+      console.log("filter...", JSON.stringify(filter, null, 2));
+    }
+  };
+
   return (
     <div className="shop_filter">
       <div className="container">
         <div className="shop_filter_container">
-          <Formik
-            initialValues={{ ...initialValues }}
-            validationSchema={Yup.object({
-              category: Yup.string()
-                .oneOf(
-                  ["men", "women", "kids"],
-                  "Invalid category, please choose again !"
-                )
-                .required("Required"),
-              size: Yup.string()
-                .oneOf(["s", "m", "l"], "Invalid size, please choose again !")
-                .required("Required"),
-              //   color: Yup.string(),
-              //   minPrice: Yup.number(),
-              //   maxPrice: Yup.number(),
-            })}
-            onSubmit={(values, action) => {
-              alert(JSON.stringify(values, null, 2));
-            }}
-          >
-            <Form>
-              <Row gutter={[32, 32]}>
-                <Col xl={6} md={6} sm={12} xs={24}>
-                  <h3>Choose Categories</h3>
-                  <Select name="category" options={[...options]} />
-                </Col>
-                <Col xl={6} md={6} sm={12} xs={24}>
-                  <h3>Choose Size</h3>
-                  <Select name="size" options={[...sizeOptions]} />
-                </Col>
-                <Col xl={6} md={6} sm={12} xs={24}>
-                  <h3>Choose Colors</h3>
-                  <ChooseColor />
-                </Col>
-                <Col xl={6} md={6} sm={12} xs={24}>
-                  <h3>Filter By Price {"(K vnd)"}</h3>
-                  <RangeSlider />
-                </Col>
-              </Row>
+          <Row gutter={[32, 32]}>
+            <Col xl={6} md={6} sm={12} xs={24}>
+              <h3>Choose Categories</h3>
+              <SelectNonFormik
+                name="category"
+                options={[...options]}
+                isEmpty={isEmptyCategory}
+                onChange={onChangeCategorySelect}
+              />
+            </Col>
+            <Col xl={6} md={6} sm={12} xs={24}>
+              <h3>Choose Size</h3>
+              <SelectNonFormik
+                name="size"
+                options={[...sizeOptions]}
+                onChange={onChangeSizeSelect}
+              />
+            </Col>
+            <Col xl={6} md={6} sm={12} xs={24}>
+              <h3>Choose Colors</h3>
+              <ChooseColor name="color" onChange={onChangeColor} />
+            </Col>
+            <Col xl={6} md={6} sm={12} xs={24}>
+              <h3>Filter By Price {"(K vnd)"}</h3>
+              <RangeSlider onChange={onChangeRangePrice} />
+            </Col>
+          </Row>
 
-              <Row className="mt-5">
-                <Col xl={24} md={24} sm={24} xs={12}>
-                  <Button
-                    type="secondary"
-                    htmlType="submit"
-                    size="sm-btn"
-                    className="ml-auto rounded-md"
-                  >
-                    Apply
-                  </Button>
-                </Col>
-              </Row>
-            </Form>
-          </Formik>
+          <Row className="mt-5">
+            <Col xl={24} md={24} sm={24} xs={12}>
+              <Button
+                type="secondary"
+                htmlType="submit"
+                size="sm-btn"
+                className="ml-auto rounded-md"
+                onClick={handleSubmitFilter}
+              >
+                Apply
+              </Button>
+            </Col>
+          </Row>
         </div>
       </div>
     </div>
