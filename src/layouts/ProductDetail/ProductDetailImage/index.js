@@ -41,10 +41,10 @@ const ProductDetailImage = () => {
         </Col>
       </Row>
       <Row gutter={[5]}>
-        {imageList.map((imageItem) => {
-          console.log(imageItem.imageLink);
+        {imageList.map((imageItem, index) => {
+          console.log(imageItem);
           return (
-            <Col xl={4}>
+            <Col xl={4} key={index}>
               <div className={`product_detail_image_item ${imageItem.status}`}>
                 <img src={imageItem.imageLink} alt="" />
               </div>

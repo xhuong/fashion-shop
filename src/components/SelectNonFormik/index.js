@@ -8,7 +8,7 @@ const SelectNonFormik = ({ name, isEmpty, options, onChange, ...props }) => {
         {options.map((option, index) => {
           if (index === 0) {
             return (
-              <option selected key={index} value={option.value}>
+              <option defaultValue={true} key={index} value={option.value}>
                 {option.name}
               </option>
             );

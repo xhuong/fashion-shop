@@ -1,4 +1,4 @@
-import { CiCircleRemove } from "react-icons/ci";
+import { IoCloseOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../Button";
@@ -30,7 +30,7 @@ function SideBar() {
             dispatch(closeSidebar());
           }}
         >
-          <CiCircleRemove />
+          <IoCloseOutline />
         </div>
       </div>
 
@@ -54,7 +54,7 @@ function SideBar() {
                 </div>
               </div>
               <div className="button_remove">
-                <CiCircleRemove />
+                <IoCloseOutline />
               </div>
             </li>
           </ul>
@@ -93,7 +93,7 @@ function SideBar() {
                 </div>
               </div>
               <div className="button_remove">
-                <CiCircleRemove />
+                <IoCloseOutline />
               </div>
             </li>
           </ul>
