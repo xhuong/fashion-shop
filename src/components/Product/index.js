@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 function Product(props) {
   const navigate = useNavigate();
   return (
-    <div className="product" onClick={() => navigate("/product-detail")}>
+    <div className="product" onClick={() => navigate("/products/1")}>
       <div className="product_img_wrapper">
         <img src={require("../../assests/images/products/women/3.jpg")} alt="" />
         {props.hasQuickView && (

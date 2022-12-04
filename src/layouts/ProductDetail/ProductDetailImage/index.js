@@ -1,9 +1,10 @@
 import { Col, Row } from "antd";
+import { useState } from "react";
 import "./index.scss";
 
 const ProductDetailImage = () => {
   // required count of images = 6
-  const listImages = [
+  const initImageList = [
     {
       imageLink: require("../../../assests/images/products/women/2.png"),
       status: "active",
@@ -30,6 +31,8 @@ const ProductDetailImage = () => {
     },
   ];
 
+  const [imageList, setImageList] = useState(initImageList);
+
   return (
     <div className="product_detail_image">
       <Row className="mb-5 product_detail_image_wrapper">
@@ -38,12 +41,12 @@ const ProductDetailImage = () => {
         </Col>
       </Row>
       <Row gutter={[5]}>
-        {listImages.map((itemImage) => {
-          console.log(itemImage.imageLink);
+        {imageList.map((imageItem) => {
+          console.log(imageItem.imageLink);
           return (
             <Col xl={4}>
-              <div className={`product_detail_image_item ${itemImage.status}`}>
-                <img src={itemImage.imageLink} alt="" />
+              <div className={`product_detail_image_item ${imageItem.status}`}>
+                <img src={imageItem.imageLink} alt="" />
               </div>
             </Col>
           );
