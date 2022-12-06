@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { openSidebar } from "../../redux/slices/sidebarSlice";
 import SideBar from "../../components/SideBar";
 import { openModal } from "../../redux/slices/modalSlice";
-import Modal from "../../components/Modal";
+import ModalLoginForm from "../../components/Modal/ModalLoginForm";
 
 function Header() {
   const isActiveModal = useSelector((state) => state.modal.isActive);
@@ -112,7 +112,7 @@ function Header() {
             </div>
           </div>
           <SideBar />
-          {isActiveModal && <Modal />}
+          {isActiveModal && <ModalLoginForm />}
         </div>
       </div>
     </div>

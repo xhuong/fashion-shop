@@ -7,6 +7,7 @@ import ScrollToTop from "./Helpers/ScrollToTop";
 import PageNotFoundPage from "./pages/PageNotFoundPage";
 import MyOrderPage from "./pages/MyOrderPage";
 import RegisterPage from "./pages/RegisterPage";
+import ProtectedRouter from "./components/ProtectedRouter";
 
 function App() {
   return (
@@ -15,8 +16,17 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="shop" element={<ShopPage />} />
-            <Route path="/my-order" element={<MyOrderPage />} />
+            <Route path="/shop" element={<ShopPage />} />
+
+            <Route
+              path="/my-order"
+              element={
+                <ProtectedRouter>
+                  <MyOrderPage />
+                </ProtectedRouter>
+              }
+            />
+
             <Route path="/products/:id" element={<ProductDetailPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="*" element={<PageNotFoundPage />} />

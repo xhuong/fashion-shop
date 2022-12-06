@@ -1,10 +1,9 @@
 import { CiCircleRemove } from "react-icons/ci";
 import { useDispatch } from "react-redux";
 import { closeModal } from "../../redux/slices/modalSlice";
-import LoginForm from "../LoginForm";
 import { StyledModal } from "./styles";
 
-function Modal() {
+function Modal({ children }) {
   const dispatch = useDispatch();
   return (
     <StyledModal>
@@ -21,7 +20,7 @@ function Modal() {
             </div>
           </div>
           <h2 className="modal_heading">Login</h2>
-          <LoginForm />
+          {children}
         </div>
       </div>
     </StyledModal>

@@ -72,6 +72,9 @@ const RegisterForm = () => {
           <Button type="secondary" size="full-btn" htmlType="submit">
             Submit Information
           </Button>
+          <Button type="primary" size="full-btn" className="mt-4">
+            Back to home
+          </Button>
         </Form>
       </Formik>
     </StyledRegisterForm>

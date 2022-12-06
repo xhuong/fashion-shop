@@ -7,11 +7,18 @@ import "./index.scss";
 import React from "react";
 import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
+import ModalNotifycation from "../ModalNotification";
 
 function Product(props) {
   const navigate = useNavigate();
   return (
-    <div className="product" onClick={() => navigate("/products/1")}>
+    <div
+      className="product"
+      onClick={(e) => {
+        e.stopPropagation();
+        navigate("/products/1");
+      }}
+    >
       <div className="product_img_wrapper">
         <img src={require("../../assests/images/products/women/3.jpg")} alt="" />
         {props.hasQuickView && (
@@ -71,7 +78,16 @@ function Product(props) {
             <li className="product_action_item">
               <IoMdHeartEmpty />
             </li>
-            <li className="product_action_item">
+            <li
+              className="product_action_item"
+              onClick={(e) => {
+                e.stopPropagation();
+                ModalNotifycation({
+                  title: "Add product to cart",
+                  content: "Product has been added success !",
+                });
+              }}
+            >
               <BsCartPlus />
             </li>
           </ul>
