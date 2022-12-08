@@ -6,8 +6,8 @@
     transform: scale(0);
   }
   to {
-    transform: scale(1);
     opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -104,7 +104,49 @@
     &:hover {
       color: $redColor;
     }
+
+    &:hover .header_action {
+      display: block;
+      animation: growth ease-in-out 0.3s;
+    }
   }
+
+  &_action {
+    display: none;
+    transition: 0.3s;
+    position: absolute;
+    width: 200px;
+    top: calc(100% - 8px);
+    left: 0;
+    background-color: $whiteColor;
+    box-shadow: 0px 0px 42px 0px rgb(32 32 32 / 15%);
+    border-radius: 8px;
+    transform-origin: 15% top;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      left: 12px;
+      border-width: 10px;
+      border-color: transparent transparent $whiteColor transparent;
+    }
+
+    &_list {
+    }
+
+    &_item a {
+      display: inline-block;
+      width: 100%;
+      padding: 10px 20px;
+      font-size: 1.4rem;
+    }
+
+    &_item:hover a {
+      color: $redColor;
+    }
+  }
+
   &_cart-number,
   &_favorite-number {
     display: inline-block;

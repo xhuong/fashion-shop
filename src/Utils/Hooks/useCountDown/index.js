@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
 export const useCountDown = ({ seconds, onEndCountDown }) => {
-  const [countDownTimer, setCountDownTimer] = useState(seconds);
+  const [countDown, setCountDown] = useState(seconds);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCountDownTimer(countDownTimer - 1);
+      setCountDown(countDown - 1);
     }, 1000);
 
-    if (countDownTimer < 0) {
+    if (countDown < 0) {
       clearInterval(timer);
       onEndCountDown();
     }
@@ -16,7 +16,7 @@ export const useCountDown = ({ seconds, onEndCountDown }) => {
     return () => {
       return clearInterval(timer);
     };
-  }, [countDownTimer]);
+  }, [countDown]);
 
-  return countDownTimer;
+  return countDown;
 };

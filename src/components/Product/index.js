@@ -9,8 +9,31 @@ import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 import ModalNotifycation from "../ModalNotification";
 
-function Product(props) {
+function Product({
+  id,
+  name,
+  price,
+  description,
+  countProduct,
+  star,
+  imgSrc,
+  countReview,
+  size,
+  color,
+  idCategory,
+  ...props
+}) {
   const navigate = useNavigate();
+
+  const formatPrice = (price) => {
+    if (price > 9999) {
+      let number = price.toString();
+      let priceConvert = number.slice(0, -3);
+      priceConvert = priceConvert + ".000";
+      return priceConvert;
+    }
+  };
+
   return (
     <div
       className="product"
@@ -20,7 +43,7 @@ function Product(props) {
       }}
     >
       <div className="product_img_wrapper">
-        <img src={require("../../assests/images/products/women/3.jpg")} alt="" />
+        <img src={require(`../../assests/images/products/${imgSrc}`)} alt="" />
         {props.hasQuickView && (
           <div className="product_button_wrapper">
             <Button type="secondary" size="full-btn">
@@ -61,12 +84,12 @@ function Product(props) {
                 <AiFillStar style={{ color: "#ff9800" }} />
                 <AiFillStar />
               </span>
-              <span className="product_reviews_count">{`(${5} Reviews)`}</span>
+              <span className="product_reviews_count">{`(${countReview} Reviews)`}</span>
             </React.Fragment>
           )}
         </div>
-        <h4 className="product_title">Women Striped Shirt Dress</h4>
-        <span className="product_price">$99 - $129</span>
+        <h4 className="product_title">{name}</h4>
+        <span className="product_price">{formatPrice(price)} VNĐ</span>
         <span className="product_sale">Sale</span>
         <span className="product_discount">- 40%</span>
 

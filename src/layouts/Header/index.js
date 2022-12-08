@@ -10,7 +10,15 @@ import ModalLoginForm from "../../components/Modal/ModalLoginForm";
 
 function Header() {
   const isActiveModal = useSelector((state) => state.modal.isActive);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
+
+  const handleClickUser = () => {
+    if (!isAuthenticated) {
+      dispatch(openModal());
+    }
+  };
+
   return (
     <div className="header">
       <div className="container">
@@ -75,8 +83,21 @@ function Header() {
             >
               <CiSearch />
             </div>
-            <div className="header_icon" onClick={() => dispatch(openModal())}>
+            <div className="header_icon" onClick={handleClickUser}>
               <CiUser />
+              {isAuthenticated && (
+                <ul className="header_action" onClick={(e) => e.stopPropagation()}>
+                  <li className="header_action_item">
+                    <Link to="/user-profile">My account</Link>
+                  </li>
+                  <li className="header_action_item">
+                    <Link to="/my-order">My order</Link>
+                  </li>
+                  <li className="header_action_item">
+                    <Link to="/logout">Logout</Link>
+                  </li>
+                </ul>
+              )}
             </div>
             <div
               className="header_icon"

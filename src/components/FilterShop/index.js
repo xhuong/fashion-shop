@@ -5,26 +5,34 @@ import Button from "../Button";
 import ChooseColor from "../ChooseColor";
 import SelectNonFormik from "../SelectNonFormik";
 import { useState } from "react";
+import { useGetListCategoriesQuery } from "../../services/CategoryAPI";
+import { useEffect } from "react";
 
 const FilterShop = () => {
-  const options = [
+  const initialOptions = [
     {
       name: "Select category",
       value: "",
     },
-    {
-      name: "women",
-      value: "women",
-    },
-    {
-      name: "men",
-      value: "men",
-    },
-    {
-      name: "kids",
-      value: "kids",
-    },
   ];
+
+  const { data: categoriesList, isSuccess } = useGetListCategoriesQuery();
+  const [options, setOptions] = useState(initialOptions);
+
+  useEffect(() => {
+    if (categoriesList && isSuccess) {
+      let result = categoriesList.map((categoryItem) => {
+        return {
+          name: categoryItem.categoryName,
+          value: categoryItem.categoryName.toLowerCase(),
+        };
+      });
+
+      setOptions((prevOption) => [...prevOption, ...result]);
+    }
+  }, [categoriesList]);
+
+  console.log("options...", options);
 
   const sizeOptions = [
     {
@@ -42,6 +50,10 @@ const FilterShop = () => {
     {
       name: "L",
       value: "l",
+    },
+    {
+      name: "XL",
+      value: "xl",
     },
   ];
 
@@ -119,11 +131,7 @@ const FilterShop = () => {
             </Col>
             <Col xl={6} md={6} sm={12} xs={24}>
               <h3>Choose Size</h3>
-              <SelectNonFormik
-                name="size"
-                options={[...sizeOptions]}
-                onChange={onChangeSizeSelect}
-              />
+              <SelectNonFormik name="size" options={[...sizeOptions]} onChange={onChangeSizeSelect} />
             </Col>
             <Col xl={6} md={6} sm={12} xs={24}>
               <h3>Choose Colors</h3>
