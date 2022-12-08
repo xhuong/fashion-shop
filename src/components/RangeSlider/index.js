@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { StyledRangeSlider } from "./styles";
 
 const RangeSlider = ({ onChange, ...props }) => {
-  const defaultRangeValue = [800, 2500];
+  const defaultRangeValue = [400, 1700];
 
   useEffect(() => {
     onChange(defaultRangeValue);
@@ -15,8 +15,8 @@ const RangeSlider = ({ onChange, ...props }) => {
         step={50}
         range={{ draggableTrack: true }}
         defaultValue={[...defaultRangeValue]}
-        min={200}
-        max={5000}
+        min={0}
+        max={2000}
         onChange={(value) => onChange(value)}
       />
     </StyledRangeSlider>

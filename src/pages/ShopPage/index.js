@@ -11,18 +11,25 @@ import { useGetNewestProductsQuery } from "../../services/ProductAPI";
 function ShopPage() {
   const [data, setData] = useState([]);
   const { data: newestProductData, isError, isLoading, isSuccess } = useGetNewestProductsQuery();
+
   useEffect(() => {
     if (newestProductData && isSuccess) {
       setData(newestProductData);
     }
   }, [newestProductData]);
 
+  const handleSetListProduct = (data) => {
+    if (data && data.length > 0) {
+      setData(data);
+    }
+  };
+
   return (
     <React.Fragment>
       <Header />
       <ShopSlider />
       <BreadCrumb />
-      <FilterShop />
+      <FilterShop handleSetListProduct={handleSetListProduct} />
       <ShopProduct data={data} isLoading={isLoading} isError={isError} />
       <Footer />
     </React.Fragment>

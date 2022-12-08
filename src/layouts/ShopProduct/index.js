@@ -4,8 +4,10 @@ import Button from "../../components/Button";
 import Product from "../../components/Product";
 import Message from "../../components/Message";
 import "./index.scss";
+import { useSelector } from "react-redux";
 
 const ShopProduct = ({ data, isLoading, isError }) => {
+  const cart = useSelector((state) => state.cart.cart);
   return (
     <div className="shop_product">
       <div className="container">

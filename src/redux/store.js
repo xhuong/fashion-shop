@@ -6,11 +6,14 @@ import { ProductAPI } from "../services/ProductAPI";
 import authSlice from "./slices/authSlice";
 import modalSlice from "./slices/modalSlice";
 import sidebarSlice from "./slices/sidebarSlice";
+import cartSlice from "./slices/cartSlice";
 
 const rootReducer = combineReducers({
   auth: authSlice,
   sidebar: sidebarSlice,
   modal: modalSlice,
+  cart: cartSlice,
+
   [AuthAPI.reducerPath]: AuthAPI.reducer,
   [ProductAPI.reducerPath]: ProductAPI.reducer,
   [CategoryAPI.reducerPath]: CategoryAPI.reducer,

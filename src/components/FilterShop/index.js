@@ -7,12 +7,16 @@ import SelectNonFormik from "../SelectNonFormik";
 import { useState } from "react";
 import { useGetListCategoriesQuery } from "../../services/CategoryAPI";
 import { useEffect } from "react";
+import { useLazyGetProductsByFilterQuery } from "../../services/ProductAPI";
 
-const FilterShop = () => {
+const FilterShop = ({ handleSetListProduct }) => {
+  const [getProductsByFilter, { data: productFilterData, isLoading, isSuccess: isSuccessFilter }] =
+    useLazyGetProductsByFilterQuery({});
+
   const initialOptions = [
     {
       name: "Select category",
-      value: "",
+      value: 0,
     },
   ];
 
@@ -24,15 +28,12 @@ const FilterShop = () => {
       let result = categoriesList.map((categoryItem) => {
         return {
           name: categoryItem.categoryName,
-          value: categoryItem.categoryName.toLowerCase(),
+          value: categoryItem.id,
         };
       });
-
       setOptions((prevOption) => [...prevOption, ...result]);
     }
   }, [categoriesList]);
-
-  console.log("options...", options);
 
   const sizeOptions = [
     {
@@ -58,18 +59,16 @@ const FilterShop = () => {
   ];
 
   const initialFilter = {
-    category: "",
+    categoryId: 0,
     size: "",
     color: "",
     price: 0,
   };
 
   const [filter, setFilter] = useState(initialFilter);
-
   const [isEmptyCategory, setIsEmptyCategory] = useState(false);
 
   const onChangeSizeSelect = (value) => {
-    console.log("size: ", value);
     setFilter((prevState) => ({
       ...prevState,
       size: value,
@@ -80,12 +79,11 @@ const FilterShop = () => {
     setIsEmptyCategory(false);
     setFilter((prevState) => ({
       ...prevState,
-      category: value,
+      categoryId: Number.parseInt(value),
     }));
   };
 
   const onChangeRangePrice = (value) => {
-    console.log("price: ", value);
     setFilter((prevState) => ({
       ...prevState,
       price: value,
@@ -108,12 +106,27 @@ const FilterShop = () => {
   };
 
   const handleSubmitFilter = () => {
-    if (filter.category === "") {
+    if (filter.categoryId === 0) {
       setIsEmptyCategory(true);
     } else {
-      console.log("filter...", JSON.stringify(filter, null, 2));
+      let bodyRequest = {
+        idCategory: filter.categoryId,
+        size: filter.size,
+        color: filter.color,
+        minPrice: filter.price[0] * 1000,
+        maxPrice: filter.price[1] * 1000,
+      };
+
+      getProductsByFilter(bodyRequest);
     }
   };
+
+  useEffect(() => {
+    if (productFilterData && isSuccessFilter) {
+      // update list product view
+      handleSetListProduct(productFilterData);
+    }
+  }, [productFilterData]);
 
   return (
     <div className="shop_filter">

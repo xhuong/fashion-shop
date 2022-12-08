@@ -1,10 +1,11 @@
 import { Modal } from "antd";
 
-const ModalNotifycation = ({ title, content, ...parameters }) => {
-  const secondsToGo = 20;
+const ModalNotifycation = ({ title, ...parameters }) => {
+  let secondsToGo = 4;
+
   const modal = Modal.success({
     title,
-    content,
+    content: `This modal will be destroyed after ${secondsToGo} second.`,
   });
 
   const timer = setInterval(() => {

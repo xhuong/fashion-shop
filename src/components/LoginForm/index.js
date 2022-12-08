@@ -20,9 +20,7 @@ const LoginForm = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
 
-  console.log("isAuthenticated", isAuthenticated);
-  const [getUserByUserName, { data: dataUser, isLoading, isError, isSuccess }] =
-    useLazyGetUserByUserNameQuery({});
+  const [getUserByUserName, { data: dataUser, isLoading, isError, isSuccess }] = useLazyGetUserByUserNameQuery({});
 
   const initialValues = {
     username: "",
@@ -63,7 +61,6 @@ const LoginForm = () => {
       }, 1000);
 
       if (countDownTimer === 0) {
-        console.log("timer expired !");
         dispatch(closeModal());
         navigate("/shop");
         clearInterval(timer);
@@ -78,26 +75,19 @@ const LoginForm = () => {
       <Formik
         initialValues={{ ...initialValues }}
         validationSchema={Yup.object({
-          username: Yup.string()
-            .min(3, "Must be 3 characters or more !")
-            .required("Required"),
-          password: Yup.string()
-            .min(6, "Must be 6 characters or more !")
-            .required("Required"),
+          username: Yup.string().min(3, "Must be 3 characters or more !").required("Required"),
+          password: Yup.string().min(6, "Must be 6 characters or more !").required("Required"),
         })}
         onSubmit={(value, action) => handleSubmitLoginForm(value)}
       >
         <Form>
           {isLoggedInSuccess && (
             <Message className="message success">
-              Login success. Welcome to Kumo Fashion shop. Page will be redirect in{" "}
-              {countDownTimer} seconds.
+              Login success. Welcome to Kumo Fashion shop. Page will be redirect in {countDownTimer} seconds.
             </Message>
           )}
           {isErrorLoggedIn && (
-            <Message className="message danger">
-              Login faild. Please check your information again !
-            </Message>
+            <Message className="message danger">Login faild. Please check your information again !</Message>
           )}
           <label className="login_label" htmlFor="username">
             Username*
@@ -107,13 +97,7 @@ const LoginForm = () => {
             Password*
           </label>
           <Input type="password" name="password" placeholder="Password..." />
-          <Button
-            className="mb-5"
-            type="secondary"
-            size="full-btn"
-            htmlType="submit"
-            loading={isLoading}
-          >
+          <Button className="mb-5" type="secondary" size="full-btn" htmlType="submit" loading={isLoading}>
             Login
           </Button>
           <div className="login_information">

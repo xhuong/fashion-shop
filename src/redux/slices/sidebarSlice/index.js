@@ -19,10 +19,7 @@ const sidebarSlice = createSlice({
         ...state,
         isActive: true,
         heading: action.payload.sideBarItemActive.name,
-        listSideBars: [
-          ...newListSideBars,
-          { ...action.payload.sideBarItemActive },
-        ],
+        listSideBars: [...newListSideBars, { ...action.payload.sideBarItemActive }],
       };
     },
     closeSidebar: (state) => {

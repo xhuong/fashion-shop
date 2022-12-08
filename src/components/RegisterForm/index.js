@@ -37,27 +37,14 @@ const RegisterForm = () => {
       <Formik
         initialValues={{ ...initialValues }}
         validationSchema={Yup.object({
-          username: Yup.string()
-            .min(8, "Must be 8 characters or more !")
-            .required("Required"),
-          nameOfUser: Yup.string()
-            .min(5, "Must be 5 characters or more !")
-            .required("Required"),
-          password: Yup.string()
-            .min(6, "Must be 6 characters or more !")
-            .required("Required"),
-          address: Yup.string()
-            .min(10, "Must be 10 characters or more !")
-            .required("Required"),
-          phoneNumber: Yup.string()
-            .matches(phoneRegExp, "Your Phone number is not valid")
-            .required("Required"),
-          level: Yup.number()
-            .oneOf([0, 1], "Invalid level value, please choose again !")
-            .required("Required"),
+          username: Yup.string().min(8, "Must be 8 characters or more !").required("Required"),
+          nameOfUser: Yup.string().min(5, "Must be 5 characters or more !").required("Required"),
+          password: Yup.string().min(6, "Must be 6 characters or more !").required("Required"),
+          address: Yup.string().min(10, "Must be 10 characters or more !").required("Required"),
+          phoneNumber: Yup.string().matches(phoneRegExp, "Your Phone number is not valid").required("Required"),
+          level: Yup.number().oneOf([0, 1], "Invalid level value, please choose again !").required("Required"),
         })}
         onSubmit={(value, action) => {
-          console.log("123");
           alert(JSON.stringify(value, null, 2));
         }}
       >

@@ -8,6 +8,9 @@ import React from "react";
 import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 import ModalNotifycation from "../ModalNotification";
+import { useDispatch } from "react-redux";
+import { addProductsToCart, addProductsToWishList } from "../../redux/slices/cartSlice";
+import { formatPrice } from "../../Utils/Commons";
 
 function Product({
   id,
@@ -24,15 +27,7 @@ function Product({
   ...props
 }) {
   const navigate = useNavigate();
-
-  const formatPrice = (price) => {
-    if (price > 9999) {
-      let number = price.toString();
-      let priceConvert = number.slice(0, -3);
-      priceConvert = priceConvert + ".000";
-      return priceConvert;
-    }
-  };
+  const dispatch = useDispatch();
 
   return (
     <div
@@ -98,16 +93,129 @@ function Product({
             <li className="product_action_item">
               <MdZoomOutMap />
             </li>
-            <li className="product_action_item">
+            <li
+              className="product_action_item"
+              onClick={(e) => {
+                e.stopPropagation();
+                let product = {};
+                Object.defineProperties(product, {
+                  id: {
+                    value: id,
+                    writable: false,
+                  },
+                  name: {
+                    value: name,
+                    writable: false,
+                  },
+                  price: {
+                    value: price,
+                    writable: false,
+                  },
+                  description: {
+                    value: description,
+                    writable: false,
+                  },
+                  countProduct: {
+                    value: countProduct,
+                    writable: false,
+                  },
+                  star: {
+                    value: star,
+                    writable: false,
+                  },
+                  imgSrc: {
+                    value: imgSrc,
+                    writable: false,
+                  },
+                  countReview: {
+                    value: countReview,
+                    writable: false,
+                  },
+                  size: {
+                    value: size,
+                    writable: false,
+                  },
+                  color: {
+                    value: color,
+                    writable: false,
+                  },
+                  idCategory: {
+                    value: idCategory,
+                    writable: false,
+                  },
+                  count: {
+                    value: 1,
+                    writable: false,
+                  },
+                });
+
+                dispatch(addProductsToWishList(product));
+                ModalNotifycation({
+                  title: "Product has been added to wishlist.",
+                });
+              }}
+            >
               <IoMdHeartEmpty />
             </li>
             <li
               className="product_action_item"
               onClick={(e) => {
                 e.stopPropagation();
+                let product = {};
+                Object.defineProperties(product, {
+                  id: {
+                    value: id,
+                    writable: false,
+                  },
+                  name: {
+                    value: name,
+                    writable: false,
+                  },
+                  price: {
+                    value: price,
+                    writable: false,
+                  },
+                  description: {
+                    value: description,
+                    writable: false,
+                  },
+                  countProduct: {
+                    value: countProduct,
+                    writable: false,
+                  },
+                  star: {
+                    value: star,
+                    writable: false,
+                  },
+                  imgSrc: {
+                    value: imgSrc,
+                    writable: false,
+                  },
+                  countReview: {
+                    value: countReview,
+                    writable: false,
+                  },
+                  size: {
+                    value: size,
+                    writable: false,
+                  },
+                  color: {
+                    value: color,
+                    writable: false,
+                  },
+                  idCategory: {
+                    value: idCategory,
+                    writable: false,
+                  },
+                  count: {
+                    value: 1,
+                    writable: false,
+                  },
+                });
+
+                dispatch(addProductsToCart(product));
                 ModalNotifycation({
-                  title: "Add product to cart",
-                  content: "Product has been added success !",
+                  title: "Product has been added to cart !",
                 });
               }}
             >

@@ -6,6 +6,8 @@
 
   &_img_wrapper {
     position: relative;
+    max-height: 335px;
+    overflow-y: hidden;
   }
   &_button_wrapper {
     opacity: 0;
