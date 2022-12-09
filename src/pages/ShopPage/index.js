@@ -19,7 +19,7 @@ function ShopPage() {
   }, [newestProductData]);
 
   const handleSetListProduct = (data) => {
-    if (data && data.length > 0) {
+    if (data) {
       setData(data);
     }
   };

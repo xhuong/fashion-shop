@@ -97,58 +97,20 @@ function Product({
               className="product_action_item"
               onClick={(e) => {
                 e.stopPropagation();
-                let product = {};
-                Object.defineProperties(product, {
-                  id: {
-                    value: id,
-                    writable: false,
-                  },
-                  name: {
-                    value: name,
-                    writable: false,
-                  },
-                  price: {
-                    value: price,
-                    writable: false,
-                  },
-                  description: {
-                    value: description,
-                    writable: false,
-                  },
-                  countProduct: {
-                    value: countProduct,
-                    writable: false,
-                  },
-                  star: {
-                    value: star,
-                    writable: false,
-                  },
-                  imgSrc: {
-                    value: imgSrc,
-                    writable: false,
-                  },
-                  countReview: {
-                    value: countReview,
-                    writable: false,
-                  },
-                  size: {
-                    value: size,
-                    writable: false,
-                  },
-                  color: {
-                    value: color,
-                    writable: false,
-                  },
-                  idCategory: {
-                    value: idCategory,
-                    writable: false,
-                  },
-                  count: {
-                    value: 1,
-                    writable: false,
-                  },
-                });
-
+                const product = {
+                  id,
+                  name,
+                  price,
+                  description,
+                  countProduct,
+                  star,
+                  imgSrc,
+                  countReview,
+                  size,
+                  color,
+                  idCategory,
+                  count: 1,
+                };
                 dispatch(addProductsToWishList(product));
                 ModalNotifycation({
                   title: "Product has been added to wishlist.",
@@ -161,58 +123,20 @@ function Product({
               className="product_action_item"
               onClick={(e) => {
                 e.stopPropagation();
-                let product = {};
-                Object.defineProperties(product, {
-                  id: {
-                    value: id,
-                    writable: false,
-                  },
-                  name: {
-                    value: name,
-                    writable: false,
-                  },
-                  price: {
-                    value: price,
-                    writable: false,
-                  },
-                  description: {
-                    value: description,
-                    writable: false,
-                  },
-                  countProduct: {
-                    value: countProduct,
-                    writable: false,
-                  },
-                  star: {
-                    value: star,
-                    writable: false,
-                  },
-                  imgSrc: {
-                    value: imgSrc,
-                    writable: false,
-                  },
-                  countReview: {
-                    value: countReview,
-                    writable: false,
-                  },
-                  size: {
-                    value: size,
-                    writable: false,
-                  },
-                  color: {
-                    value: color,
-                    writable: false,
-                  },
-                  idCategory: {
-                    value: idCategory,
-                    writable: false,
-                  },
-                  count: {
-                    value: 1,
-                    writable: false,
-                  },
-                });
-
+                const product = {
+                  id,
+                  name,
+                  price,
+                  description,
+                  countProduct,
+                  star,
+                  imgSrc,
+                  countReview,
+                  size,
+                  color,
+                  idCategory,
+                  count: 1,
+                };
                 dispatch(addProductsToCart(product));
                 ModalNotifycation({
                   title: "Product has been added to cart !",

@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 
 const ShopProduct = ({ data, isLoading, isError }) => {
   const cart = useSelector((state) => state.cart.cart);
+  // console.log("data", data);
   return (
     <div className="shop_product">
       <div className="container">
@@ -21,6 +22,11 @@ const ShopProduct = ({ data, isLoading, isError }) => {
             {isError && (
               <Col xl={8} md={8} sm={8} xs={24}>
                 <Message className="danger">Oops, some error when loading data !</Message>
+              </Col>
+            )}
+            {data.length <= 0 && (
+              <Col xl={8} md={8} sm={8} xs={24}>
+                <Message className="infor text-center">Sorry, No product matches !</Message>
               </Col>
             )}
             {data?.map((product, index) => (

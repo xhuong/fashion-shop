@@ -25,7 +25,7 @@ function SideBar() {
   };
 
   const listProductInCart = useSelector((state) => state.cart.cart);
-  console.log(listProductInCart);
+  console.log("cart list", listProductInCart);
 
   const result = findActiveSideBarItem(listSideBars);
 
