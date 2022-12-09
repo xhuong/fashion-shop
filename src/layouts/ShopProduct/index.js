@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 
 const ShopProduct = ({ data, isLoading, isError }) => {
   const cart = useSelector((state) => state.cart.cart);
-  // console.log("data", data);
   return (
     <div className="shop_product">
       <div className="container">
