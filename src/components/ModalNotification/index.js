@@ -1,7 +1,7 @@
 import { Modal } from "antd";
 
 const ModalNotifycation = ({ title, ...parameters }) => {
-  let secondsToGo = 4;
+  let secondsToGo = 2;
 
   const modal = Modal.success({
     title,

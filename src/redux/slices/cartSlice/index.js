@@ -24,11 +24,12 @@ const cartSlice = createSlice({
       // case 1: if product has added existed from cart state
       if (isExisted) {
         // console.log("running logic when existed....");
+
         const finalResult = newCart.map((cartItem) => {
           if (cartItem.id === action.payload.id) {
             return {
               ...cartItem,
-              count: cartItem.count + 1,
+              count: cartItem.count + action.payload.count,
             };
           } else {
             return {
@@ -37,25 +38,26 @@ const cartSlice = createSlice({
           }
         });
 
-        // console.log("ddd...", d);
-
         return {
           ...state,
           cart: [...finalResult],
         };
       } else {
         console.log("running logic when not existed....");
+        // console.log("payload", action.payload);
+
         return {
           ...state,
           cart: [...state.cart, action.payload],
         };
       }
     },
-    removeProductsFromCard: (state, action) => {
+    removeProductsFromCart: (state, action) => {
+      console.log("id...", action.payload);
       if (state.cart.length > 0) {
         const newCart = [...state.cart];
         const result = newCart.filter((cartItem) => {
-          return cartItem.id !== action.payload.id;
+          return cartItem.id !== action.payload;
         });
         return {
           ...state,
@@ -63,17 +65,60 @@ const cartSlice = createSlice({
         };
       }
     },
-    addProductsToWishList: (state, action) => {
+    removeAllProductsFromCart: (state) => {
       return {
         ...state,
-        wishlist: [...state.wishlist, action.payload],
+        cart: [],
       };
+    },
+    addProductsToWishList: (state, action) => {
+      const newWishList = [...state.wishlist];
+
+      // check existed
+
+      const isExisted = newWishList.some((wishItem) => {
+        if (wishItem.id === action.payload.id) {
+          return true;
+        }
+        return false;
+      });
+
+      console.log("isExisted", isExisted);
+
+      // case 1: if product has added existed from cart state
+      if (isExisted) {
+        // console.log("running logic when existed....");
+        const finalResult = newWishList.map((wishItem) => {
+          if (wishItem.id === action.payload.id) {
+            return {
+              ...wishItem,
+              count: wishItem.count + 1,
+              price: wishItem.price * (wishItem.count + 1),
+            };
+          } else {
+            return {
+              ...wishItem,
+            };
+          }
+        });
+
+        return {
+          ...state,
+          wishlist: [...finalResult],
+        };
+      } else {
+        console.log("running logic when not existed....");
+        return {
+          ...state,
+          wishlist: [...state.wishlist, action.payload],
+        };
+      }
     },
     removeProductsFromWishList: (state, action) => {
       if (state.wishlist.length > 0) {
         const newWishList = [...state.wishlist];
         const result = newWishList.filter((wishListItem) => {
-          return wishListItem.id !== action.payload.id;
+          return wishListItem.id !== action.payload;
         });
         return {
           ...state,
@@ -84,7 +129,12 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addProductsToCart, removeProductsFromCard, addProductsToWishList, removeProductsFromWishList } =
-  cartSlice.actions;
+export const {
+  addProductsToCart,
+  removeProductsFromCart,
+  addProductsToWishList,
+  removeProductsFromWishList,
+  removeAllProductsFromCart,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -7,7 +7,7 @@ import { useState } from "react";
 import Product from "../../components/Product";
 import Section from "../../components/Section";
 
-function Trending() {
+function Trending({ data, isLoading, isError }) {
   const initTrends = [
     { title: "All", status: "active", id: 0 },
     { title: "Men", status: "unactive", id: 1 },
@@ -37,10 +37,7 @@ function Trending() {
         <Col xl={4} lg={6} md={6} sm={12} xs={8} align={"center"}>
           <Link to="">
             <div className="trending">
-              <img
-                src={require("../../assests/images/trendings/fashion.png")}
-                alt=""
-              />
+              <img src={require("../../assests/images/trendings/fashion.png")} alt="" />
             </div>
             <p className="trending_name">Men's Wear</p>
           </Link>
@@ -48,10 +45,7 @@ function Trending() {
         <Col xl={4} lg={6} md={6} sm={12} xs={8} align={"center"}>
           <Link to="">
             <div className="trending">
-              <img
-                src={require("../../assests/images/trendings/tshirt.png")}
-                alt=""
-              />
+              <img src={require("../../assests/images/trendings/tshirt.png")} alt="" />
             </div>
             <p className="trending_name">Kid's Wear</p>
           </Link>
@@ -59,10 +53,7 @@ function Trending() {
         <Col xl={4} lg={6} md={6} sm={12} xs={8} align={"center"}>
           <Link to="">
             <div className="trending">
-              <img
-                src={require("../../assests/images/trendings/accessories.png")}
-                alt=""
-              />
+              <img src={require("../../assests/images/trendings/accessories.png")} alt="" />
             </div>
             <p className="trending_name">Accessories</p>
           </Link>
@@ -70,10 +61,7 @@ function Trending() {
         <Col xl={4} lg={6} md={6} sm={12} xs={8} align={"center"}>
           <Link to="">
             <div className="trending">
-              <img
-                src={require("../../assests/images/trendings/pant.png")}
-                alt=""
-              />
+              <img src={require("../../assests/images/trendings/pant.png")} alt="" />
             </div>
             <p className="trending_name">Men's Shoes</p>
           </Link>
@@ -81,10 +69,7 @@ function Trending() {
         <Col xl={4} lg={6} md={6} sm={12} xs={8} align={"center"}>
           <Link to="">
             <div className="trending">
-              <img
-                src={require("../../assests/images/trendings/television.png")}
-                alt=""
-              />
+              <img src={require("../../assests/images/trendings/television.png")} alt="" />
             </div>
             <p className="trending_name">Television</p>
           </Link>
@@ -92,10 +77,7 @@ function Trending() {
         <Col xl={4} lg={6} md={6} sm={12} xs={8} align={"center"}>
           <Link to="">
             <div className="trending">
-              <img
-                src={require("../../assests/images/trendings/pant.png")}
-                alt=""
-              />
+              <img src={require("../../assests/images/trendings/pant.png")} alt="" />
             </div>
             <p className="trending_name">Men's Pants</p>
           </Link>
@@ -121,30 +103,23 @@ function Trending() {
 
       {/* Product list component  */}
       <Row gutter={[30, 30]}>
-        <Col xl={6} md={6} sm={12} xs={12}>
-          <Product />
-        </Col>
-        <Col xl={6} md={6} sm={12} xs={12}>
-          <Product />
-        </Col>
-        <Col xl={6} md={6} sm={12} xs={12}>
-          <Product />
-        </Col>
-        <Col xl={6} md={6} sm={12} xs={12}>
-          <Product />
-        </Col>
-        <Col xl={6} md={6} sm={12} xs={12}>
-          <Product />
-        </Col>
-        <Col xl={6} md={6} sm={12} xs={12}>
-          <Product />
-        </Col>
-        <Col xl={6} md={6} sm={12} xs={12}>
-          <Product />
-        </Col>
-        <Col xl={6} md={6} sm={12} xs={12}>
-          <Product />
-        </Col>
+        {data?.map((product, index) => (
+          <Col xl={6} md={6} sm={12} xs={12} key={index}>
+            <Product
+              id={product.id}
+              nameOfProduct={product.nameOfProduct}
+              priceOfProduct={product.priceOfProduct}
+              productDescription={product.productDescription}
+              countOfProduct={product.countOfProduct}
+              starOfProduct={product.starOfProduct}
+              productImages={product.productImages}
+              countOfReviewer={product.countOfReviewer}
+              size={product.size}
+              color={product.color}
+              idCategory={product.idCategory}
+            />
+          </Col>
+        ))}
       </Row>
       {/* End Product list component  */}
     </Section>

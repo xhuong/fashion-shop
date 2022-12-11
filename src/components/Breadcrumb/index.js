@@ -17,7 +17,7 @@ const BreadCrumb = (props) => {
         <Link to="/shop">Shop</Link>
       </AntBreadCrumb.Item>
       <AntBreadCrumb.Item>
-        <Link to="/shop/men">Men</Link>
+        <Link to="/my-cart">My Cart</Link>
       </AntBreadCrumb.Item>
     </AntBreadCrumb>
   );

@@ -7,6 +7,8 @@ import authSlice from "./slices/authSlice";
 import modalSlice from "./slices/modalSlice";
 import sidebarSlice from "./slices/sidebarSlice";
 import cartSlice from "./slices/cartSlice";
+import { OrderAPI } from "../services/OrderAPI";
+import { OrderDetailsAPI } from "../services/OrderDetailsAPI";
 
 const rootReducer = combineReducers({
   auth: authSlice,
@@ -17,12 +19,19 @@ const rootReducer = combineReducers({
   [AuthAPI.reducerPath]: AuthAPI.reducer,
   [ProductAPI.reducerPath]: ProductAPI.reducer,
   [CategoryAPI.reducerPath]: CategoryAPI.reducer,
+  [OrderAPI.reducerPath]: OrderAPI.reducer,
+  [OrderDetailsAPI.reducerPath]: OrderDetailsAPI.reducer,
 });
 
 const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(AuthAPI.middleware).concat(ProductAPI.middleware).concat(CategoryAPI.middleware),
+    getDefaultMiddleware()
+      .concat(AuthAPI.middleware)
+      .concat(ProductAPI.middleware)
+      .concat(CategoryAPI.middleware)
+      .concat(OrderAPI.middleware)
+      .concat(OrderDetailsAPI.middleware),
 });
 
 setupListeners(store.dispatch);

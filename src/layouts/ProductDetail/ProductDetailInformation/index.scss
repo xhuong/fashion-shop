@@ -1,13 +1,6 @@
 @import "../../../assests/styles/variables";
 
 .product_detail_information {
-  &_star {
-    display: inline-flex;
-    svg {
-      font-size: 1.2rem;
-      color: #d6dde6;
-    }
-  }
   &_reviews_count {
     font-size: 1.3rem;
     letter-spacing: 0.2px;

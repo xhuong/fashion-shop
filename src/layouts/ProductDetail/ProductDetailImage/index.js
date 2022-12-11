@@ -2,31 +2,32 @@ import { Col, Row } from "antd";
 import { useState } from "react";
 import "./index.scss";
 
-const ProductDetailImage = () => {
+const ProductDetailImage = ({ productImages }) => {
+  console.log("productImages", productImages);
   // required count of images = 6
   const initImageList = [
     {
-      imageLink: require("../../../assests/images/products/women/2.png"),
+      imageLink: require(`../../../assests/images/products/${productImages}`),
       status: "active",
     },
     {
-      imageLink: require("../../../assests/images/products/women/2.png"),
+      imageLink: require(`../../../assests/images/products/${productImages}`),
       status: "unactive",
     },
     {
-      imageLink: require("../../../assests/images/products/women/2.png"),
+      imageLink: require(`../../../assests/images/products/${productImages}`),
       status: "unactive",
     },
     {
-      imageLink: require("../../../assests/images/products/women/2.png"),
+      imageLink: require(`../../../assests/images/products/${productImages}`),
       status: "unactive",
     },
     {
-      imageLink: require("../../../assests/images/products/women/2.png"),
+      imageLink: require(`../../../assests/images/products/${productImages}`),
       status: "unactive",
     },
     {
-      imageLink: require("../../../assests/images/products/women/2.png"),
+      imageLink: require(`../../../assests/images/products/${productImages}`),
       status: "unactive",
     },
   ];
@@ -37,7 +38,7 @@ const ProductDetailImage = () => {
     <div className="product_detail_image">
       <Row className="mb-5 product_detail_image_wrapper">
         <Col xl={24}>
-          <img src={require("../../../assests/images/products/women/2.png")} alt="" />
+          <img src={require(`../../../assests/images/products/${productImages}`)} alt="" />
         </Col>
       </Row>
       <Row gutter={[5]}>

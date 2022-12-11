@@ -4,10 +4,8 @@ import Button from "../../components/Button";
 import Product from "../../components/Product";
 import Message from "../../components/Message";
 import "./index.scss";
-import { useSelector } from "react-redux";
 
 const ShopProduct = ({ data, isLoading, isError }) => {
-  const cart = useSelector((state) => state.cart.cart);
   return (
     <div className="shop_product">
       <div className="container">
@@ -15,7 +13,7 @@ const ShopProduct = ({ data, isLoading, isError }) => {
           <Row gutter={[32, 32]} justify="center">
             {isLoading && (
               <Col xl={8} md={8} sm={8} xs={24}>
-                <Message className="message infor">Data is loading...</Message>
+                <Message className="infor">Data is loading...</Message>
               </Col>
             )}
             {isError && (
@@ -32,13 +30,13 @@ const ShopProduct = ({ data, isLoading, isError }) => {
               <Col xl={6} md={6} sm={8} xs={24} key={index}>
                 <Product
                   id={product.id}
-                  name={product.nameOfProduct}
-                  price={product.priceOfProduct}
-                  description={product.productDescription}
-                  countProduct={product.countOfProduct}
-                  star={product.starOfProduct}
-                  imgSrc={product.productImages}
-                  countReview={product.countOfReviewer}
+                  nameOfProduct={product.nameOfProduct}
+                  priceOfProduct={product.priceOfProduct}
+                  productDescription={product.productDescription}
+                  countOfProduct={product.countOfProduct}
+                  starOfProduct={product.starOfProduct}
+                  productImages={product.productImages}
+                  countOfReviewer={product.countOfReviewer}
                   size={product.size}
                   color={product.color}
                   idCategory={product.idCategory}

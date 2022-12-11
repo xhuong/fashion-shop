@@ -7,8 +7,11 @@ import "slick-carousel/slick/slick-theme.css";
 
 import "./index.scss";
 import Button from "../../components/Button";
+import { useNavigate } from "react-router-dom";
 
 const SimpleSlider = () => {
+  const navigate = useNavigate();
+
   const settings = {
     dots: true,
     infinite: true,
@@ -32,7 +35,7 @@ const SimpleSlider = () => {
               New Winter <br /> Collections 2022
             </h2>
             <p className="slider_subheading">There's nothing like trend</p>
-            <Button type="primary" size="md-btn">
+            <Button type="primary" size="md-btn" onClick={() => navigate("/shop")}>
               Shop Now <BsArrowRight />
             </Button>
           </div>
@@ -50,7 +53,7 @@ const SimpleSlider = () => {
               New Winter <br /> Collections 2022
             </h2>
             <p className="slider_subheading">There's nothing like trend</p>
-            <Button type="primary" size="md-btn">
+            <Button type="primary" size="md-btn" onClick={() => navigate("/shop")}>
               Shop Now <BsArrowRight />
             </Button>
           </div>
@@ -68,7 +71,7 @@ const SimpleSlider = () => {
               New Winter <br /> Collections 2022
             </h2>
             <p className="slider_subheading">There's nothing like trend</p>
-            <Button type="primary" size="md-btn">
+            <Button type="primary" size="md-btn" onClick={() => navigate("/shop")}>
               Shop Now <BsArrowRight />
             </Button>
           </div>

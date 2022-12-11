@@ -9,9 +9,21 @@ import { openModal } from "../../redux/slices/modalSlice";
 import ModalLoginForm from "../../components/Modal/ModalLoginForm";
 
 function Header() {
+  const dispatch = useDispatch();
+
   const isActiveModal = useSelector((state) => state.modal.isActive);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const dispatch = useDispatch();
+  const listProductInCart = useSelector((state) => state.cart.cart);
+  const listProductInWishList = useSelector((state) => state.cart.wishlist);
+
+  const getCountProducts = (array) => {
+    let count = 0;
+    array.map((element) => {
+      count += element.count;
+    });
+
+    return count;
+  };
 
   const handleClickUser = () => {
     if (!isAuthenticated) {
@@ -113,7 +125,7 @@ function Header() {
               }
             >
               <CiHeart />
-              <span className="header_favorite-number">2</span>
+              <span className="header_favorite-number">{getCountProducts(listProductInWishList)}</span>
             </div>
             <div
               className="header_icon"
@@ -129,7 +141,7 @@ function Header() {
               }
             >
               <BsCart />
-              <span className="header_cart-number">3</span>
+              <span className="header_cart-number">{getCountProducts(listProductInCart)}</span>
             </div>
           </div>
           <SideBar />

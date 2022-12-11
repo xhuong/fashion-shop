@@ -25,6 +25,12 @@ const Message = styled.p`
     background-color: #f8d7da;
     border-color: #f5c6cb;
   }
+
+  &.warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+  }
 `;
 
 export default Message;

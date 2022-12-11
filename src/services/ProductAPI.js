@@ -11,7 +11,18 @@ export const ProductAPI = createApi({
       query: (body) =>
         `/products/filter?idCategory=${body.idCategory}&size=${body.size}&color=${body.color}&minPrice=${body.minPrice}&maxPrice=${body.maxPrice}`,
     }),
+    getTrendingProducts: builder.query({
+      query: () => "products/trending",
+    }),
+    getListProductsOrdered: builder.query({
+      query: () => "/order/listProductOrdered",
+    }),
   }),
 });
 
-export const { useGetNewestProductsQuery, useLazyGetProductsByFilterQuery } = ProductAPI;
+export const {
+  useGetNewestProductsQuery,
+  useLazyGetProductsByFilterQuery,
+  useGetTrendingProductsQuery,
+  useGetListProductsOrderedQuery,
+} = ProductAPI;

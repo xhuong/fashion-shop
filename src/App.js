@@ -5,9 +5,9 @@ import ShopPage from "./pages/ShopPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import ScrollToTop from "./Helpers/ScrollToTop";
 import PageNotFoundPage from "./pages/PageNotFoundPage";
-import MyOrderPage from "./pages/MyOrderPage";
 import RegisterPage from "./pages/RegisterPage";
 import ProtectedRouter from "./components/ProtectedRouter";
+import CartPage from "./pages/CartPage";
 
 function App() {
   return (
@@ -17,17 +17,15 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/shop" element={<ShopPage />} />
-
             <Route
-              path="/my-order"
+              path="/my-cart"
               element={
                 <ProtectedRouter>
-                  <MyOrderPage />
+                  <CartPage />
                 </ProtectedRouter>
               }
             />
-
-            <Route path="/products/:id" element={<ProductDetailPage />} />
+            <Route path="/products/details" element={<ProductDetailPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="*" element={<PageNotFoundPage />} />
           </Routes>

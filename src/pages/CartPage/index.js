@@ -3,19 +3,21 @@ import Header from "../../layouts/Header";
 import Footer from "../../layouts/Footer";
 import ContainerComponent from "../../components/ContainerComponent";
 import BreadCrumb from "../../components/Breadcrumb";
-import Order from "../../layouts/Order";
+import { useSelector } from "react-redux";
+import Cart from "../../layouts/Cart";
 
-const MyOrderPage = () => {
+const CartPage = () => {
+  const cartData = useSelector((state) => state.cart.cart);
   return (
     <React.Fragment>
       <Header />
       <ContainerComponent marginTopEqualHeaderHeight>
         <BreadCrumb normal={true} />
       </ContainerComponent>
-      <Order />
+      <Cart cartData={cartData} />
       <Footer />
     </React.Fragment>
   );
 };
 
-export default MyOrderPage;
+export default CartPage;
