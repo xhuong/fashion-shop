@@ -10,11 +10,14 @@ import { useState } from "react";
 import Message from "../Message";
 import { removeProductsFromCart, removeProductsFromWishList } from "../../redux/slices/cartSlice";
 import { formatPrice } from "../../Utils/Commons";
+import SearchFormResult from "../SearchFormResult";
+import { useLazyFindProductsByNameQuery } from "../../services/ProductAPI";
 
 function SideBar() {
   const navigate = useNavigate("/shop");
   const [sideBarContent, setSideBarContent] = useState("");
   const dispatch = useDispatch();
+  const [searchResult, setSearchResult] = useState([]);
 
   const isActiveSidebar = useSelector((state) => state.sidebar.isActive);
   const sidebarHeading = useSelector((state) => state.sidebar.heading);
@@ -31,6 +34,9 @@ function SideBar() {
   const listProductInWishList = useSelector((state) => state.cart.wishlist);
   const result = findActiveSideBarItem(listSideBars);
 
+  const [findProductsByName, { data: dataFindProductsByName, isError, isLoading, isSuccess }] =
+    useLazyFindProductsByNameQuery({});
+
   const totalPrice = (cart) => {
     if (cart.length > 0) {
       let totalPrice = 0;
@@ -41,6 +47,18 @@ function SideBar() {
       return totalPrice;
     }
   };
+
+  const onSubmit = (value) => {
+    findProductsByName({ keyword: value.searchKeyWord, idCategory: value.idCategory });
+  };
+
+  useEffect(() => {
+    if (dataFindProductsByName?.length > 0 && isSuccess) {
+      setSearchResult(dataFindProductsByName);
+    } else if (dataFindProductsByName?.length === 0 && isSuccess) {
+      setSearchResult([]);
+    }
+  }, [dataFindProductsByName]);
 
   useEffect(() => {
     if (result[0]?.status === "active") {
@@ -205,7 +223,8 @@ function SideBar() {
       ) : null}
       {sideBarContent === "searchProductsView" ? (
         <div className="p-6">
-          <SearchForm />
+          <SearchForm onSubmit={onSubmit} />
+          {searchResult.length > 0 && <SearchFormResult data={searchResult} isLoading={isLoading} />}
         </div>
       ) : null}
     </div>

@@ -7,6 +7,8 @@ import { openSidebar } from "../../redux/slices/sidebarSlice";
 import SideBar from "../../components/SideBar";
 import { openModal } from "../../redux/slices/modalSlice";
 import ModalLoginForm from "../../components/Modal/ModalLoginForm";
+import { removeActiveAuthenticated } from "../../redux/slices/authSlice";
+import ModalNotifycation from "../../components/ModalNotification";
 
 function Header() {
   const dispatch = useDispatch();
@@ -29,6 +31,11 @@ function Header() {
     if (!isAuthenticated) {
       dispatch(openModal());
     }
+  };
+
+  const handleLogOut = () => {
+    dispatch(removeActiveAuthenticated());
+    localStorage.clear();
   };
 
   return (
@@ -70,7 +77,7 @@ function Header() {
                     <Link to={"/404"}>404 Page</Link>
                   </li>
                   <li className="navbar_subnav-item">
-                    <Link to={"/my-order"}>My order</Link>
+                    <Link to={"/my-cart"}>My cart</Link>
                   </li>
                 </ul>
               </li>
@@ -103,10 +110,19 @@ function Header() {
                     <Link to="/user-profile">My account</Link>
                   </li>
                   <li className="header_action_item">
-                    <Link to="/my-order">My order</Link>
+                    <Link to="/my-cart">My cart</Link>
                   </li>
-                  <li className="header_action_item">
-                    <Link to="/logout">Logout</Link>
+                  <li
+                    className="header_action_item"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleLogOut();
+                      ModalNotifycation({
+                        title: "Logged out success.",
+                      });
+                    }}
+                  >
+                    <Link to="/">Logout</Link>
                   </li>
                 </ul>
               )}

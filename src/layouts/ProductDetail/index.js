@@ -3,8 +3,8 @@ import "./index.scss";
 import ProductDetailImage from "./ProductDetailImage";
 import ProductDetailInformation from "./ProductDetailInformation";
 
-const ProductDetail = ({ data }) => {
-  console.log("productDetailData...", data);
+const ProductDetail = ({ productData }) => {
+  const data = productData[0];
   return (
     <div className="product_detail">
       <div className="container">
@@ -12,22 +12,22 @@ const ProductDetail = ({ data }) => {
           <Row gutter={[50, 50]}>
             <Col xl={12} md={12} sm={12} xs={24}>
               {/* Image product area  */}
-              <ProductDetailImage productImages={data.productImages} />
+              <ProductDetailImage productImages={data?.productImages} />
             </Col>
             <Col xl={12} md={12} sm={12} xs={24}>
               {/* Product Information Area  */}
               <ProductDetailInformation
-                id={data.id}
-                nameOfProduct={data.nameOfProduct}
-                priceOfProduct={data.priceOfProduct}
-                productDescription={data.productDescription}
-                countOfProduct={data.countOfProduct}
-                starOfProduct={data.starOfProduct}
-                productImages={data.productImages}
-                countOfReviewer={data.countOfReviewer}
-                size={data.size}
-                color={data.color}
-                idCategory={data.idCategory}
+                id={data?.id}
+                nameOfProduct={data?.nameOfProduct}
+                priceOfProduct={data?.priceOfProduct}
+                productDescription={data?.productDescription}
+                countOfProduct={data?.countOfProduct}
+                starOfProduct={data?.starOfProduct}
+                productImages={data?.productImages}
+                countOfReviewer={data?.countOfReviewer}
+                size={data?.size}
+                color={data?.color}
+                idCategory={data?.idCategory}
               />
             </Col>
           </Row>

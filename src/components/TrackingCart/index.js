@@ -4,6 +4,7 @@ import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { removeAllProductsFromCart } from "../../redux/slices/cartSlice";
+import { openModal } from "../../redux/slices/modalSlice";
 import { useAddNewOrderMutation, useLazyGetNewestOrderQuery } from "../../services/OrderAPI";
 import { useAddNewOrderDetailsMutation } from "../../services/OrderDetailsAPI";
 import { formatPrice, totalPrice } from "../../Utils/Commons";
@@ -12,6 +13,7 @@ import Message from "../Message";
 import "./index.scss";
 
 const TrackingCart = ({ cartData }) => {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const navigate = useNavigate();
   const [countDownTimer, setCountDownTimer] = useState(5);
   const [isOrderSuccess, setIsOrderSuccess] = useState(false);
@@ -32,10 +34,14 @@ const TrackingCart = ({ cartData }) => {
   const dispatch = useDispatch();
 
   const handleCheckout = () => {
-    const orderDate = new Date().toISOString().slice(0, 19).replace("T", " ");
-    const status = 0;
-    const idUser = 1;
-    addNewOrder({ orderDate, status, idUser });
+    if (isAuthenticated) {
+      const orderDate = new Date().toISOString().slice(0, 19).replace("T", " ");
+      const status = 0;
+      const idUser = localStorage.getItem("idUser");
+      addNewOrder({ orderDate, status, idUser });
+    } else {
+      dispatch(openModal());
+    }
   };
 
   const addDataToOrderDetails = (idNewestOrder) => {

@@ -15,7 +15,7 @@ const TrackingOrder = ({ cartData }) => {
                 {/* information  */}
                 <div className="w-full text-center mt-8 p-12 border-b border-gray-200">
                   <div className="rounded-full overflow-hidden w-36 h-36 ml-auto mr-auto mb-4">
-                    <img src={require("../../assests/images/users/user.jpg")} alt="" />
+                    <img src={require("../../assests/images/users/default-profile-picture.png")} alt="" />
                   </div>
                   <p className="font-semibold">Xuan Huong</p>
                   <span className="font-normal">Quang Binh, VN</span>

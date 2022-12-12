@@ -6,10 +6,27 @@ import TrackingCart from "../../components/TrackingCart";
 import TrackingOrder from "../../components/TrackingOrder";
 import { GiClothes } from "react-icons/gi";
 import "./index.scss";
+import { useEffect } from "react";
 
 const Cart = ({ cartData }) => {
+  const [userInfor, setUserInfor] = useState(["Your name", "Your address"]);
   const [defaultView, setDefaultView] = useState("cartView");
   const defaultStyles = "flex items-center p-4 gap-x-4 capitalize bg-gray-50 hover:cursor-pointer";
+
+  const handleSetUserInformation = () => {
+    const idUser = localStorage.getItem("idUser");
+    const nameOfUser = localStorage.getItem("nameOfUser");
+    const role = localStorage.getItem("role");
+    const address = localStorage.getItem("address");
+
+    if (idUser && nameOfUser && role && address) {
+      setUserInfor([nameOfUser, address]);
+    }
+  };
+
+  useEffect(() => {
+    handleSetUserInformation();
+  }, []);
   return (
     <div className="cart">
       <div className="container">
@@ -20,10 +37,10 @@ const Cart = ({ cartData }) => {
                 {/* information  */}
                 <div className="w-full text-center mt-8 p-12 border-b border-gray-200">
                   <div className="rounded-full overflow-hidden w-36 h-36 ml-auto mr-auto mb-4">
-                    <img src={require("../../assests/images/users/user.jpg")} alt="" />
+                    <img src={require("../../assests/images/users/default-profile-picture.png")} alt="" />
                   </div>
-                  <p className="font-semibold">Xuan Huong</p>
-                  <span className="font-normal">Quang Binh, VN</span>
+                  <p className="font-semibold">{userInfor[0]}</p>
+                  <span className="font-normal">{userInfor[1]}</span>
                 </div>
                 {/* end information  */}
 
@@ -34,6 +51,7 @@ const Cart = ({ cartData }) => {
                     className={`${defaultStyles} ${
                       defaultView === "cartView" ? "text-red-500 font-semibold" : undefined
                     }`}
+                    onClick={() => setDefaultView("cartView")}
                   >
                     <BsCart /> My Carts
                   </li>

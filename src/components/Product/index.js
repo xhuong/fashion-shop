@@ -33,21 +33,7 @@ function Product({
       className="product"
       onClick={(e) => {
         e.stopPropagation();
-        navigate(`/products/details`, {
-          state: {
-            id,
-            color,
-            countOfProduct,
-            countOfReviewer,
-            nameOfProduct,
-            priceOfProduct,
-            productDescription,
-            productImages,
-            size,
-            starOfProduct,
-            idCategory,
-          },
-        });
+        navigate(`/products/details/${id}`);
       }}
     >
       <div className="product_img_wrapper">

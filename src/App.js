@@ -6,10 +6,21 @@ import ProductDetailPage from "./pages/ProductDetailPage";
 import ScrollToTop from "./Helpers/ScrollToTop";
 import PageNotFoundPage from "./pages/PageNotFoundPage";
 import RegisterPage from "./pages/RegisterPage";
-import ProtectedRouter from "./components/ProtectedRouter";
 import CartPage from "./pages/CartPage";
+import { useEffect } from "react";
 
 function App() {
+  const handleLeavePage = () => {
+    localStorage.clear();
+  };
+
+  useEffect(() => {
+    window.addEventListener("beforeunload", handleLeavePage);
+    return () => {
+      window.removeEventListener("beforeunload", handleLeavePage);
+    };
+  }, []);
+
   return (
     <div className="app">
       <div className="app_content">
@@ -17,15 +28,16 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/shop" element={<ShopPage />} />
-            <Route
+            {/* <Route
               path="/my-cart"
               element={
                 <ProtectedRouter>
                   <CartPage />
                 </ProtectedRouter>
               }
-            />
-            <Route path="/products/details" element={<ProductDetailPage />} />
+            /> */}
+            <Route path="/my-cart" element={<CartPage />} />
+            <Route path="/products/details/:id" element={<ProductDetailPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="*" element={<PageNotFoundPage />} />
           </Routes>

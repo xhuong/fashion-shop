@@ -40,7 +40,9 @@ const LoginForm = () => {
           let level = dataUser[0].level;
           let roleUser = level === 1 ? "admin" : level === 2 ? "staff" : "customer";
 
-          localStorage.setItem("username", dataUser[0].userName);
+          localStorage.setItem("nameOfUser", dataUser[0].nameOfUser);
+          localStorage.setItem("address", dataUser[0].address);
+          localStorage.setItem("idUser", dataUser[0].id);
           localStorage.setItem("role", roleUser);
 
           dispatch(setActiveAuthenticated());

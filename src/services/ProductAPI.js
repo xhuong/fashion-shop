@@ -15,7 +15,13 @@ export const ProductAPI = createApi({
       query: () => "products/trending",
     }),
     getListProductsOrdered: builder.query({
-      query: () => "/order/listProductOrdered",
+      query: (body) => `/order/listProductOrdered?idUser=${body.idUser}`,
+    }),
+    getProductById: builder.query({
+      query: (body) => `/products/?id=${body.id}`,
+    }),
+    findProductsByName: builder.query({
+      query: (body) => `/products/find?idCategory=${body.idCategory}&keyword=${body.keyword}`,
     }),
   }),
 });
@@ -24,5 +30,7 @@ export const {
   useGetNewestProductsQuery,
   useLazyGetProductsByFilterQuery,
   useGetTrendingProductsQuery,
-  useGetListProductsOrderedQuery,
+  useLazyGetListProductsOrderedQuery,
+  useLazyGetProductByIdQuery,
+  useLazyFindProductsByNameQuery,
 } = ProductAPI;

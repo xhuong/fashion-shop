@@ -1,44 +1,47 @@
 import { Col, Row } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./index.scss";
 
 const ProductDetailImage = ({ productImages }) => {
-  console.log("productImages", productImages);
-  // required count of images = 6
-  const initImageList = [
-    {
-      imageLink: require(`../../../assests/images/products/${productImages}`),
-      status: "active",
-    },
-    {
-      imageLink: require(`../../../assests/images/products/${productImages}`),
-      status: "unactive",
-    },
-    {
-      imageLink: require(`../../../assests/images/products/${productImages}`),
-      status: "unactive",
-    },
-    {
-      imageLink: require(`../../../assests/images/products/${productImages}`),
-      status: "unactive",
-    },
-    {
-      imageLink: require(`../../../assests/images/products/${productImages}`),
-      status: "unactive",
-    },
-    {
-      imageLink: require(`../../../assests/images/products/${productImages}`),
-      status: "unactive",
-    },
-  ];
+  const [imageList, setImageList] = useState([]);
+  useEffect(() => {
+    if (productImages !== undefined) {
+      const initImageList = [
+        {
+          imageLink: require(`../../../assests/images/products/${productImages}`),
+          status: "active",
+        },
+        {
+          imageLink: require(`../../../assests/images/products/${productImages}`),
+          status: "unactive",
+        },
+        {
+          imageLink: require(`../../../assests/images/products/${productImages}`),
+          status: "unactive",
+        },
+        {
+          imageLink: require(`../../../assests/images/products/${productImages}`),
+          status: "unactive",
+        },
+        {
+          imageLink: require(`../../../assests/images/products/${productImages}`),
+          status: "unactive",
+        },
+        {
+          imageLink: require(`../../../assests/images/products/${productImages}`),
+          status: "unactive",
+        },
+      ];
 
-  const [imageList, setImageList] = useState(initImageList);
+      setImageList(initImageList);
+    }
+  }, [productImages]);
 
   return (
     <div className="product_detail_image">
       <Row className="mb-5 product_detail_image_wrapper">
         <Col xl={24}>
-          <img src={require(`../../../assests/images/products/${productImages}`)} alt="" />
+          <img src={imageList[0]?.imageLink} alt="" />
         </Col>
       </Row>
       <Row gutter={[5]}>
