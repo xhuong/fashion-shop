@@ -1,6 +1,4 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useLazyGetListProductsOrderedQuery } from "../../services/ProductAPI";
 import { formatPrice, totalPriceOfTrackingOrder } from "../../Utils/Commons";

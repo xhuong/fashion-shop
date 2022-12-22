@@ -101,7 +101,7 @@ function SideBar() {
                     <p className="font-bold sidebar_item_size">
                       Size: {wishListItem.size} x{wishListItem.count}
                     </p>
-                    <p className="sidebar_item_price">{formatPrice(wishListItem.priceOfProduct)}</p>
+                    <p className="sidebar_item_price">{formatPrice(wishListItem.priceOfProduct)} VNĐ</p>
                   </div>
                 </div>
                 <div
@@ -134,7 +134,7 @@ function SideBar() {
             <>
               <div className="sidebar_total">
                 <p className="sidebar_total_heading">Subtotal</p>
-                <h4 className="sidebar_total_price">{formatPrice(totalPrice(listProductInWishList))}</h4>
+                <h4 className="sidebar_total_price">{formatPrice(totalPrice(listProductInWishList))} VNĐ</h4>
               </div>
               <div className="sidebar_action">
                 <Button type="secondary" size="full-btn" className="mb-5">

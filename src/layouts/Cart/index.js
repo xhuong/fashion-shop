@@ -7,6 +7,7 @@ import TrackingOrder from "../../components/TrackingOrder";
 import { GiClothes } from "react-icons/gi";
 import "./index.scss";
 import { useEffect } from "react";
+import TrackingWishList from "../../components/TrackingWishList";
 
 const Cart = ({ cartData }) => {
   const [userInfor, setUserInfor] = useState(["Your name", "Your address"]);
@@ -85,6 +86,7 @@ const Cart = ({ cartData }) => {
             <Col xl={16} md={16} sm={24}>
               {defaultView === "cartView" && <TrackingCart cartData={cartData} />}
               {defaultView === "myOrderView" && <TrackingOrder />}
+              {defaultView === "wishListView" && <TrackingWishList />}
             </Col>
           </Row>
         </div>
