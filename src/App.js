@@ -28,14 +28,6 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/shop" element={<ShopPage />} />
-            {/* <Route
-              path="/my-cart"
-              element={
-                <ProtectedRouter>
-                  <CartPage />
-                </ProtectedRouter>
-              }
-            /> */}
             <Route path="/my-cart" element={<CartPage />} />
             <Route path="/products/details/:id" element={<ProductDetailPage />} />
             <Route path="/register" element={<RegisterPage />} />
