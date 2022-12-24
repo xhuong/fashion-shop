@@ -23,7 +23,7 @@ const cartSlice = createSlice({
 
       // case 1: if product has added existed from cart state
       if (isExisted) {
-        // console.log("running logic when existed....");
+        console.log("running logic when existed....");
 
         const finalResult = newCart.map((cartItem) => {
           if (cartItem.id === action.payload.id) {
@@ -42,7 +42,9 @@ const cartSlice = createSlice({
           ...state,
           cart: [...finalResult],
         };
-      } else {
+      }
+      // case 2: if product has added not existed from cart state
+      else {
         console.log("running logic when not existed....");
         // console.log("payload", action.payload);
 
@@ -69,6 +71,12 @@ const cartSlice = createSlice({
       return {
         ...state,
         cart: [],
+      };
+    },
+    removeAllProductsFromWishList: (state) => {
+      return {
+        ...state,
+        wishlist: [],
       };
     },
     addProductsToWishList: (state, action) => {
@@ -134,6 +142,7 @@ export const {
   removeProductsFromCart,
   addProductsToWishList,
   removeProductsFromWishList,
+  removeAllProductsFromWishList,
   removeAllProductsFromCart,
 } = cartSlice.actions;
 

@@ -8,7 +8,12 @@ import "./index.scss";
 import { useEffect } from "react";
 import { useState } from "react";
 import Message from "../Message";
-import { removeProductsFromCart, removeProductsFromWishList } from "../../redux/slices/cartSlice";
+import {
+  addProductsToCart,
+  removeAllProductsFromWishList,
+  removeProductsFromCart,
+  removeProductsFromWishList,
+} from "../../redux/slices/cartSlice";
 import { formatPrice } from "../../Utils/Commons";
 import SearchFormResult from "../SearchFormResult";
 import { useLazyFindProductsByNameQuery } from "../../services/ProductAPI";
@@ -50,6 +55,13 @@ function SideBar() {
 
   const onSubmit = (value) => {
     findProductsByName({ keyword: value.searchKeyWord, idCategory: value.idCategory });
+  };
+
+  const handleMoveProductFromWishlistToCart = () => {
+    listProductInWishList.map((item) => {
+      dispatch(addProductsToCart(item));
+    });
+    dispatch(removeAllProductsFromWishList());
   };
 
   useEffect(() => {
@@ -137,7 +149,7 @@ function SideBar() {
                 <h4 className="sidebar_total_price">{formatPrice(totalPrice(listProductInWishList))} VNĐ</h4>
               </div>
               <div className="sidebar_action">
-                <Button type="secondary" size="full-btn" className="mb-5">
+                <Button type="secondary" size="full-btn" className="mb-5" onClick={handleMoveProductFromWishlistToCart}>
                   Move to cart
                 </Button>
                 <Button type="primary" size="full-btn">
