@@ -8,10 +8,15 @@ import { GiClothes } from "react-icons/gi";
 import "./index.scss";
 import { useEffect } from "react";
 import TrackingWishList from "../../components/TrackingWishList";
+import { MdManageAccounts } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Cart = ({ cartData }) => {
   const [userInfor, setUserInfor] = useState(["Your name", "Your address"]);
   const [defaultView, setDefaultView] = useState("cartView");
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const navigate = useNavigate();
   const defaultStyles = "flex items-center p-4 gap-x-4 capitalize bg-gray-50 hover:cursor-pointer";
 
   const handleSetUserInformation = () => {
@@ -79,6 +84,19 @@ const Cart = ({ cartData }) => {
                   >
                     <CiLocationOn /> Address
                   </li>
+                  {localStorage.getItem("role") === "admin" && isAuthenticated && (
+                    <li
+                      className={`${defaultStyles} ${
+                        defaultView === "myAddressView" ? "text-red-500 font-semibold" : undefined
+                      }`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate("/manager/page-manager");
+                      }}
+                    >
+                      <MdManageAccounts /> Go to page manager
+                    </li>
+                  )}
                 </ul>
                 {/* end dashboard navigation  */}
               </div>

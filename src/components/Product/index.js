@@ -28,6 +28,19 @@ function Product({
 }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const renderStar = (numberOfStars) => {
+    var stars = [];
+    for (var i = 0; i < 5; i++) {
+      if (i < numberOfStars) {
+        stars.push(<AiFillStar style={{ color: "#ff9800" }} />);
+      } else {
+        stars.push(<AiFillStar />);
+      }
+    }
+    return stars;
+  };
+
   return (
     <div
       className="product"
@@ -52,11 +65,9 @@ function Product({
           {!props.hasQuickView && (
             <React.Fragment>
               <span className="product_star">
-                <AiFillStar style={{ color: "#ff9800" }} />
-                <AiFillStar style={{ color: "#ff9800" }} />
-                <AiFillStar style={{ color: "#ff9800" }} />
-                <AiFillStar style={{ color: "#ff9800" }} />
-                <AiFillStar />
+                {renderStar(starOfProduct).map((item, index) => {
+                  return item;
+                })}
               </span>
               <span className="product_reviews_count">{`(${countOfReviewer} Reviews)`}</span>
             </React.Fragment>

@@ -4,8 +4,13 @@ import Select from "../Select";
 import * as Yup from "yup";
 import Button from "../Button";
 import { StyledRegisterForm } from "./styles";
+import { useAddNewUserMutation } from "../../services/AuthAPI";
+import Message from "../Message";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
+  const navigate = useNavigate();
   const initialValues = {
     username: "",
     nameOfUser: "",
@@ -17,40 +22,57 @@ const RegisterForm = () => {
 
   const levelOptions = [
     {
-      name: "Choose your level",
+      name: "Staff",
       value: 2,
     },
     {
       name: "Customer",
-      value: 0,
-    },
-    {
-      name: "Staff",
-      value: 1,
+      value: 3,
     },
   ];
 
+  const [isRegisterSuccess, setIsRegisterSuccess] = useState(false);
+  const [addNewUser, { data: addNewUserData, isLoading, isSuccess, isError }] = useAddNewUserMutation();
+
   const phoneRegExp = /(84|0[3|5|7|8|9])+([0-9]{8})\b/g;
 
+  const handleSubmitForm = (registryInformation) => {
+    const { userName, nameOfUser, password, address, phoneNumber, level } = registryInformation;
+    addNewUser({ userName, nameOfUser, password, address, phoneNumber, level })
+      .unwrap()
+      .then((response) => {
+        if (response.error === false) {
+          setIsRegisterSuccess(true);
+        }
+      })
+      .catch(() => {
+        console.log("Error in registry page");
+      });
+  };
   return (
     <StyledRegisterForm>
       <Formik
         initialValues={{ ...initialValues }}
         validationSchema={Yup.object({
-          username: Yup.string().min(8, "Must be 8 characters or more !").required("Required"),
+          userName: Yup.string().min(5, "Must be 5 characters or more !").required("Required"),
           nameOfUser: Yup.string().min(5, "Must be 5 characters or more !").required("Required"),
-          password: Yup.string().min(6, "Must be 6 characters or more !").required("Required"),
-          address: Yup.string().min(10, "Must be 10 characters or more !").required("Required"),
+          password: Yup.string().min(5, "Must be 5 characters or more !").required("Required"),
+          address: Yup.string().min(5, "Must be 5 characters or more !").required("Required"),
           phoneNumber: Yup.string().matches(phoneRegExp, "Your Phone number is not valid").required("Required"),
-          level: Yup.number().oneOf([0, 1], "Invalid level value, please choose again !").required("Required"),
+          level: Yup.number().oneOf([2, 3], "Invalid level value, please choose again !").required("Required"),
         })}
         onSubmit={(value, action) => {
-          alert(JSON.stringify(value, null, 2));
+          handleSubmitForm(value);
         }}
       >
         <Form>
           <h2 className="register_heading">Register account at kumo</h2>
-          <Input type="text" name="username" placeholder="Username..." />
+
+          {isRegisterSuccess && <Message className="message success">Register successfully !</Message>}
+
+          {isError && <Message className="message danger">Register failed, Please contact of administrator !</Message>}
+
+          <Input type="text" name="userName" placeholder="Username..." />
           <Input type="text" name="nameOfUser" placeholder="Your name..." />
           <Input type="password" name="password" placeholder="Your password..." />
           <Input type="text" name="address" placeholder="Address..." />
@@ -59,7 +81,7 @@ const RegisterForm = () => {
           <Button type="secondary" size="full-btn" htmlType="submit">
             Submit Information
           </Button>
-          <Button type="primary" size="full-btn" className="mt-4">
+          <Button type="primary" size="full-btn" className="mt-4" onClick={() => navigate("/")}>
             Back to home
           </Button>
         </Form>

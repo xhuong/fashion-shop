@@ -7,10 +7,10 @@ const StyledRate = styled.div`
   }
 `;
 
-const Rate = ({ disable, defaultValue, ...props }) => {
+const Rate = ({ disabled, defaultValue, value, ...props }) => {
   return (
     <StyledRate>
-      <RateAnt defaultValue={defaultValue} disabled={disable} />
+      <RateAnt defaultValue={defaultValue} disabled={disabled} value={value} />
     </StyledRate>
   );
 };

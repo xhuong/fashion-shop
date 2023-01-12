@@ -107,7 +107,7 @@ function Header() {
               {isAuthenticated && (
                 <ul className="header_action" onClick={(e) => e.stopPropagation()}>
                   <li className="header_action_item">
-                    <Link to="/user-profile">My account</Link>
+                    <Link to="/my-cart">My account</Link>
                   </li>
                   <li className="header_action_item">
                     <Link to="/my-cart">My cart</Link>

@@ -23,6 +23,12 @@ export const ProductAPI = createApi({
     findProductsByName: builder.query({
       query: (body) => `/products/find?idCategory=${body.idCategory}&keyword=${body.keyword}`,
     }),
+    getAllProductOrdered: builder.query({
+      query: () => `/order/get-all-products-ordered`,
+    }),
+    getAllProduct: builder.query({
+      query: () => `/product/get-all-product`,
+    }),
   }),
 });
 
@@ -33,4 +39,6 @@ export const {
   useLazyGetListProductsOrderedQuery,
   useLazyGetProductByIdQuery,
   useLazyFindProductsByNameQuery,
+  useLazyGetAllProductOrderedQuery,
+  useLazyGetAllProductQuery,
 } = ProductAPI;

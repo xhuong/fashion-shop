@@ -6,7 +6,7 @@ import Notify from "../../layouts/Notify";
 
 const RequiredLoginPage = () => {
   const notifyContent = {
-    title: "You are not logged.",
+    title: "You are not logged in.",
     message: "You are accessing a page that required login to see it. Please login before you can see this page.",
   };
 

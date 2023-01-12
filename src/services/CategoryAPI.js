@@ -10,4 +10,4 @@ export const CategoryAPI = createApi({
   }),
 });
 
-export const { useGetListCategoriesQuery } = CategoryAPI;
+export const { useGetListCategoriesQuery, useLazyGetListCategoriesQuery } = CategoryAPI;

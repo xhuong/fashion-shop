@@ -1,16 +1,17 @@
 import { connect, useField } from "formik";
-import { StyledSelect } from "./styles";
+import { StyledSelectSecond } from "./styles";
 import Message from "../Message";
 
-const Select = ({ options, ...props }) => {
+const Select2 = ({ options, ...props }) => {
+  console.log("props.value", props.defaultValue);
   const [field, meta] = useField(props);
   return (
-    <StyledSelect>
-      <select name={props.name} {...field} {...props}>
+    <StyledSelectSecond>
+      <select name={props.name} {...field}>
         {options.map((option, index) => {
-          if (index === 0) {
+          if (option.value === props.defaultValue) {
             return (
-              <option defaultValue={true} key={index} value={option.value}>
+              <option selected key={index} value={option.value}>
                 {option.name}
               </option>
             );
@@ -24,8 +25,8 @@ const Select = ({ options, ...props }) => {
         })}
       </select>
       {meta.touched && meta.error ? <Message className="message danger">{meta.error}</Message> : null}
-    </StyledSelect>
+    </StyledSelectSecond>
   );
 };
 
-export default connect(Select);
+export default connect(Select2);

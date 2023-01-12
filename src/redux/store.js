@@ -9,6 +9,7 @@ import sidebarSlice from "./slices/sidebarSlice";
 import cartSlice from "./slices/cartSlice";
 import { OrderAPI } from "../services/OrderAPI";
 import { OrderDetailsAPI } from "../services/OrderDetailsAPI";
+import { CommonAPI } from "../services/commonAPI";
 
 const rootReducer = combineReducers({
   auth: authSlice,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   [CategoryAPI.reducerPath]: CategoryAPI.reducer,
   [OrderAPI.reducerPath]: OrderAPI.reducer,
   [OrderDetailsAPI.reducerPath]: OrderDetailsAPI.reducer,
+  [CommonAPI.reducerPath]: CommonAPI.reducer,
 });
 
 const store = configureStore({
@@ -31,7 +33,8 @@ const store = configureStore({
       .concat(ProductAPI.middleware)
       .concat(CategoryAPI.middleware)
       .concat(OrderAPI.middleware)
-      .concat(OrderDetailsAPI.middleware),
+      .concat(OrderDetailsAPI.middleware)
+      .concat(CommonAPI.middleware),
 });
 
 setupListeners(store.dispatch);

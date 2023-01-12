@@ -4,7 +4,8 @@ import RequiredLoginPage from "../../pages/RequiredLoginPage";
 
 const ProtectedRouter = ({ children }) => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  if (isAuthenticated) {
+  const role = localStorage.getItem("role");
+  if (isAuthenticated && role === "admin") {
     return <React.Fragment>{children}</React.Fragment>;
   } else {
     return <RequiredLoginPage />;

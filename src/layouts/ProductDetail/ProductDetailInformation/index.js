@@ -27,14 +27,13 @@ const ProductDetailInformation = ({
   const [message, setMessage] = useState("");
   const [number, setNumber] = useState(1);
   const [isSelectedColor, setIsSelectedColor] = useState(false);
-
   const dispatch = useDispatch();
 
   const onChangeColor = (value) => {
     if (value !== color && value !== undefined) {
       setMessage("notMatchedColor");
       setIsSelectedColor(true);
-    } else if (value === color) {
+    } else if (value === color && color !== undefined) {
       setIsSelectedColor(true);
       setMessage("matchedColor");
     }
@@ -86,7 +85,7 @@ const ProductDetailInformation = ({
       <p className="text-success d-inline-block pt-1 pb-1 px-4 rounded-sm">{getCategoryName(idCategory)}</p>
       <h2 className="font-semibold mb-1 text-5xl my-4">{nameOfProduct}</h2>
       <div className="flex items-center">
-        <Rate defaultValue={4} disabled={true} />
+        <Rate defaultValue={0} disabled={true} value={starOfProduct} />
         <span className="product_detail_information_reviews_count ml-2">{`(${countOfReviewer} Reviews)`}</span>
       </div>
       <div className="my-6">
@@ -97,7 +96,7 @@ const ProductDetailInformation = ({
         <p className="font-semibold my-6">Color: </p>
         <ChooseColor name="color" onChange={(e) => onChangeColor(e)} />
         {message === "notMatchedColor" && (
-          <Message className="message warning mt-4">Sorry, product dont have that color.</Message>
+          <Message className="message warning mt-4">Sorry, product dont have this color.</Message>
         )}
         {message === "requireSelectColor" && (
           <Message className="message warning mt-4">
