@@ -5,7 +5,7 @@ export const CategoryAPI = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_API_URL }),
   endpoints: (builder) => ({
     getListCategories: builder.query({
-      query: () => "/categories/list",
+      query: () => "/categories",
     }),
   }),
 });

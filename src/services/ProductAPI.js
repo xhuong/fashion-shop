@@ -12,10 +12,10 @@ export const ProductAPI = createApi({
         `/products/filter?idCategory=${body.idCategory}&size=${body.size}&color=${body.color}&minPrice=${body.minPrice}&maxPrice=${body.maxPrice}`,
     }),
     getTrendingProducts: builder.query({
-      query: () => "products/trending",
+      query: () => "/products/trending",
     }),
     getListProductsOrdered: builder.query({
-      query: (body) => `/order/listProductOrdered?idUser=${body.idUser}`,
+      query: (body) => `/user/${body.idUser}/orders`,
     }),
     getProductById: builder.query({
       query: (body) => `/products/?id=${body.id}`,
@@ -24,10 +24,10 @@ export const ProductAPI = createApi({
       query: (body) => `/products/find?idCategory=${body.idCategory}&keyword=${body.keyword}`,
     }),
     getAllProductOrdered: builder.query({
-      query: () => `/order/get-all-products-ordered`,
+      query: () => `/orders`,
     }),
     getAllProduct: builder.query({
-      query: () => `/product/get-all-product`,
+      query: () => `/products`,
     }),
   }),
 });

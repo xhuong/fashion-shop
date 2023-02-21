@@ -8,15 +8,15 @@ export const AuthAPI = createApi({
       query: () => "/users",
     }),
     getUserByUserName: builder.query({
-      query: (userName) => `/users/${userName}`,
+      query: (userName) => `/user/${userName}`,
     }),
     getUserById: builder.query({
-      query: (userId) => `/users/getAUser/${userId}`,
+      query: (userId) => `/user/get-user-by-id/${userId}`,
     }),
     addNewUser: builder.mutation({
       query: (body) => {
         return {
-          url: "/users",
+          url: "/user",
           method: "PUT",
           body,
         };
@@ -25,7 +25,7 @@ export const AuthAPI = createApi({
     deleteAUser: builder.mutation({
       query: (userId) => {
         return {
-          url: `/users/${userId}`,
+          url: `/user/${userId}`,
           method: "DELETE",
         };
       },

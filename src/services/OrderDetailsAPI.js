@@ -7,7 +7,7 @@ export const OrderDetailsAPI = createApi({
     addNewOrderDetails: builder.mutation({
       query: (body) => {
         return {
-          url: "/order-details/addNewOrderDetails",
+          url: "/order/add-new-order-details",
           method: "PUT",
           body,
         };

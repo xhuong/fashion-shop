@@ -5,7 +5,7 @@ export const CommonAPI = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_API_URL }),
   endpoints: (builder) => ({
     getAllTableName: builder.query({
-      query: () => "/apps/get-all-table-name",
+      query: () => "/app/get-all-table-name",
     }),
   }),
 });

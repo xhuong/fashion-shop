@@ -7,7 +7,7 @@ export const OrderAPI = createApi({
     addNewOrder: builder.mutation({
       query: (body) => {
         return {
-          url: "/order/addNewOrder",
+          url: "/order/add",
           method: "PUT",
           body,
         };
@@ -15,7 +15,7 @@ export const OrderAPI = createApi({
     }),
 
     getNewestOrder: builder.query({
-      query: () => "/order/getNewestOrder",
+      query: () => "/order/newest",
     }),
   }),
 });
