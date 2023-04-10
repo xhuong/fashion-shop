@@ -29,7 +29,7 @@ const ProductDetailPage = () => {
       <ContainerComponent marginTopEqualHeaderHeight>
         <BreadCrumb normal={true} />
       </ContainerComponent>
-      <ProductDetail productData={data} />
+      <ProductDetail productData={data[0]} />
       <Footer />
     </React.Fragment>
   );

@@ -18,7 +18,7 @@ export const ProductAPI = createApi({
       query: (body) => `/user/${body.idUser}/orders`,
     }),
     getProductById: builder.query({
-      query: (body) => `/products/?id=${body.id}`,
+      query: (body) => `/product/${body.id}`,
     }),
     findProductsByName: builder.query({
       query: (body) => `/products/find?idCategory=${body.idCategory}&keyword=${body.keyword}`,
