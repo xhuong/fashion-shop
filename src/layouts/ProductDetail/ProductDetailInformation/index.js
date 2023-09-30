@@ -8,7 +8,7 @@ import { useState } from "react";
 import Message from "../../../components/Message";
 import Rate from "../../../components/Rate";
 import { useDispatch } from "react-redux";
-import { addProductsToCart } from "../../../redux/slices/cartSlice";
+import { addProductsToCart, addProductsToWishList } from "../../../redux/slices/cartSlice";
 import ModalNotifycation from "../../../components/ModalNotification";
 
 const ProductDetailInformation = ({
@@ -80,6 +80,25 @@ const ProductDetailInformation = ({
     }
   };
 
+  const handleAddToWishList = () => {
+    const product = {
+      id,
+      color,
+      countOfProduct,
+      countOfReviewer,
+      nameOfProduct,
+      priceOfProduct,
+      productDescription,
+      productImages,
+      size,
+      starOfProduct,
+      idCategory,
+      count: Number.parseInt(number),
+    };
+    dispatch(addProductsToWishList(product));
+    ModalNotifycation({ title: "Add product to wish list success." });
+  }
+
   return (
     <div className="product_detail_information">
       <p className="text-success d-inline-block pt-1 pb-1 px-4 rounded-sm">{getCategoryName(idCategory)}</p>
@@ -125,7 +144,7 @@ const ProductDetailInformation = ({
           </Col>
 
           <Col span={6}>
-            <Button type="primary" size="full-btn">
+            <Button type="primary" size="full-btn" onClick={handleAddToWishList}>
               <BsHeart /> wishlist
             </Button>
           </Col>

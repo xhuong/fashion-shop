@@ -43,6 +43,7 @@ const RegisterForm = () => {
       .then((response) => {
         if (response.error === false) {
           setIsRegisterSuccess(true);
+          console.log("create new user successfully!")
         }
       })
       .catch(() => {
